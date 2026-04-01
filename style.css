@@ -1158,7 +1158,510 @@ body, html {
 
 
 /* КНОПКИ ВСЬО, THE FUCKING END */ 
+/* КНОПКИ ВСЬО, THE FUCKING END */ 
+/* КНОПКИ ВСЬО, THE FUCKING END */ 
+/* КНОПКИ ВСЬО, THE FUCKING END */ 
+/* КНОПКИ ВСЬО, THE FUCKING END */ 
+/* КНОПКИ ВСЬО, THE FUCKING END */
 
+
+/* МОДАЛЬНІ ВІКНА ТА ОВЕРЛЕЇ (ФУНДАМЕНТ) */
+
+/* 1. ФОНИ (ОВЕРЛЕЇ) */
+.submit-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2000;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    touch-action: none;
+    overscroll-behavior: none;
+    background-color: #1a1a1a;
+}
+
+.submit-overlay.mailbox-mode { background-color: #1D3561; }
+.submit-overlay.hole-mode { background-color: #080C0C; }
+
+.submit-overlay.hole-mode::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+.bag-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1800;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: none;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.bag-overlay.open { display: flex; }
+
+.rules-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.caps-overlay { background: #dcdcdc; }
+.photo-overlay { background: #fff; }
+.atmo-overlay { background: #f0ede8; }
+
+body.submit-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    touch-action: none;
+}
+
+/* 2. ПЛАШКИ ТА КОНТЕЙНЕРИ */
+.submit-content {
+    position: relative;
+    z-index: 10;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 24px 30px 24px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 14px;
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.submit-editor-wrap {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 2px 18px rgba(0,0,0,0.09);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.submit-overlay.hole-mode .submit-editor-wrap {
+    box-shadow: 0 2px 24px rgba(0,0,0,0.5);
+}
+
+.bag-panel {
+    background: #FAFAF5;
+    width: 100%;
+    max-width: 500px;
+    max-height: 75vh;
+    border-radius: 24px 24px 0 0;
+    padding: 24px 20px 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    overflow: hidden;
+}
+
+.rules-modal-box {
+    background: #FAFAF5;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 320px;
+    max-height: 85vh;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transform: translateY(20px);
+    animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.submit-preview-screen {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    padding: 30px 24px 50px 24px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: transparent;
+}
+
+.photo-overlay.hole-mode .submit-preview-screen {
+    background: #080C0C;
+}
+
+.preview-post-card {
+    width: 100%;
+    max-width: 400px;
+    min-height: 80px;
+    border-radius: 16px;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 1.6;
+    word-break: break-word;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.valky-card {
+    flex: 0 0 100%;
+    aspect-ratio: 1080 / 1350;
+    border-radius: 16px;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.submit-overlay.hole-mode .valky-card {
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+}
+
+.caps-preview-card {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 1px;
+    background: #e8e8e8;
+    border-radius: 8px;
+    border-bottom: 6px solid #aaa;
+    border-right: 4px solid #bbb;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #eee;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.festive-birthday-card {
+    background: #FAF8F4;
+    border: 3px solid #FFDA59;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 3. ХРЕСТИКИ ТА КНОПКИ ЗАКРИТТЯ */
+.close-submit, #close-atmo, #close-photo, #close-caps {
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    font-size: 20px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 100;
+}
+
+.close-submit:active, #close-atmo:active, #close-photo:active, #close-caps:active {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.close-silence {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 32px;
+    cursor: pointer;
+    color: #555;
+}
+
+.bag-close {
+    cursor: pointer;
+    color: #888;
+    font-size: 24px;
+}
+
+.rules-modal-close {
+    background: #1a1a1a;
+    color: #FFDA59;
+    border: none;
+    padding: 12px;
+    border-radius: 16px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.rules-modal-close:active { transform: scale(0.95); }
+
+.close-sent {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #888;
+}
+
+.achievement-close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 14px;
+    color: #000;
+    background: #FFDA59;
+    border: 2px solid rgba(0,0,0,0.3);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    line-height: 24px;
+    text-align: center;
+    z-index: 20;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: transform 0.1s;
+}
+
+.achievement-close:active { transform: scale(0.9); }
+
+/* 4. ПОЛЯ ВВОДУ */
+.submit-editor {
+    width: 100%;
+    min-height: 180px;
+    max-height: 260px;
+    overflow-y: auto;
+    padding: 16px 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    line-height: 1.65;
+    outline: none;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    max-width: 100%;
+}
+
+.submit-overlay.mailbox-mode .submit-editor {
+    background: #fff;
+    color: #1a1a1a;
+}
+
+.submit-overlay.hole-mode .submit-editor {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+.anon-name-input-field {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 14px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    outline: none;
+    min-width: 0;
+}
+
+.submit-overlay.mailbox-mode .anon-name-input-field { color: #111111; }
+.submit-overlay.hole-mode .anon-name-input-field { color: #ccc; }
+
+.submit-name-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid transparent;
+    padding: 8px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    outline: none;
+    border-radius: 0;
+}
+
+.submit-overlay.mailbox-mode .submit-name-input { color: #1a1a1a; }
+.submit-overlay.hole-mode .submit-name-input { color: #e0e0e0; }
+
+.caps-editor {
+    width: 100%;
+    max-width: 400px;
+    min-height: 180px;
+    border-radius: 8px;
+    border-bottom: 6px solid #aaa;
+    border-right: 4px solid #bbb;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #eee;
+    padding: 18px 20px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #333;
+    background: #e8e8e8;
+    outline: none;
+    resize: none;
+    box-sizing: border-box;
+    line-height: 1.4;
+}
+
+.atmo-polaroid-caption {
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-size: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #444;
+    padding: 0 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 5. КНОПКИ ВІДПРАВКИ ТА ДІЙ У МОДАЛКАХ */
+.submit-action-btn, .close-sent-btn {
+    padding: 14px 40px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+    background: #fff;
+    color: #000;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.close-sent-btn {
+    margin-top: 10px;
+    padding: 12px 36px;
+    font-size: 15px;
+}
+
+.submit-overlay.mailbox-mode .submit-action-btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.submit-overlay.hole-mode .submit-action-btn,
+.submit-overlay.hole-mode .close-sent-btn,
+.atmo-overlay .close-sent-btn {
+    background: rgba(255,255,255,0.08);
+    color: #e0e0e0;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+.preview-edit-btn {
+    padding: 8px 16px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+.preview-edit-btn:active {
+    background: rgba(0, 0, 0, 0.7);
+    transform: scale(0.95);
+}
+
+.toolbar-attach-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+    flex-shrink: 0;
+}
+
+.submit-overlay.mailbox-mode .toolbar-attach-btn {
+    color: #444;
+    background: rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.submit-overlay.hole-mode .toolbar-attach-btn {
+    color: #aaa;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.inline-done-btn {
+    background: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.2s, background 0.2s, color 0.2s;
+    opacity: 0;
+    pointer-events: none;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.submit-overlay.hole-mode .inline-done-btn {
+    background: #F4C73E;
+    color: #1a1a1a;
+    box-shadow: 0 4px 15px rgba(244, 199, 62, 0.2);
+}
 
 
 
@@ -1449,3 +1952,4 @@ input, textarea, [contenteditable] {
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
 }
+
