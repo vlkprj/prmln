@@ -649,11 +649,246 @@ body, html {
     align-self: center;
 }
 
+/* КНОПКА «ПОДЯКУВАТИ» */ 
+.b-thank {
+    background: #fff;
+    border: 2px solid #B24A3B;
+    border-radius: 30px;
+    padding: 12px 22px;
+    gap: 10px;
+    font-family: 'Inter', sans-serif; 
+    font-weight: 700;
+    font-size: 15px;
+    color: #B24A3B;
+    box-shadow: 0 4px 12px rgba(178,74,59,0.15);
+    align-self: center;
+}
 
-/* THE FUCKING END
-   THE FUCKING END
-   THE FUCKING END
-   THE FUCKING END */ 
+.b-thank:active {
+    background: #B24A3B;
+    color: #fff;
+}
+
+.b-thank:active .heart-svg {
+    stroke: #fff;
+}
+
+.heart-svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.b-thank svg path {
+    transition: fill 0.2s;
+}
+
+.b-thank:active svg path {
+    fill: #fff;
+}
+
+/* КНОПКА «ПОСКАРЖИТИСЬ» */ 
+.complain-wrapper {
+    position: relative;
+    width: 80%; 
+    margin: 40px auto 15px auto; 
+    z-index: 1;
+}
+
+.b-complain {
+    background: linear-gradient(135deg, #ffe0eb 0%, #ffc2d4 40%, #ffb3c6 60%, #ffe0eb 100%);
+    background-size: 200% 200%;
+    animation: shimmerComplain 3s ease infinite;
+    border: 2px solid #ff85a1;
+    border-radius: 24px;
+    color: #c2185b;
+    font-family: 'PT Serif', serif;
+    font-style: italic;
+    font-size: 18px;
+    width: 100%;
+    padding: 10px 15px;
+    gap: 10px;
+    box-shadow: 0 4px 14px rgba(255, 133, 161, 0.45), inset 0 1px 0 rgba(255,255,255,0.8), 0 2px 0 #d4607a;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.6);
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    z-index: 2;
+}
+
+.b-complain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.9) 1px, transparent 2px), radial-gradient(circle at 70% 60%, rgba(255,255,255,0.7) 1px, transparent 2px), radial-gradient(circle at 40% 80%, rgba(255,255,255,0.8) 1px, transparent 2px), radial-gradient(circle at 85% 25%, rgba(255,255,255,0.6) 1px, transparent 2px);
+    animation: glitterTwinkle 3s linear infinite;
+    pointer-events: none;
+}
+
+.b-complain::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    animation: glitterSwipe 2.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.complain-pop-text {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    color: #ff6b81;
+    text-transform: uppercase;
+    z-index: 1;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.complain-pop-text.pop-up {
+    top: -22px;
+    opacity: 1;
+}
+
+/* КНОПКА «ОТАКА ПРОБЛЕМА» */ 
+.b-problem {
+    background: #e8eaed;
+    background-image: radial-gradient(#d5d7db 1px, transparent 1px);
+    background-size: 10px 10px;
+    border: 1px solid #dadce0;
+    border-radius: 12px;
+    flex-direction: column;
+    width: 90%;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    align-self: center;
+    padding: 0; 
+}
+
+.b-problem .map-header {
+    background: #fff;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #dadce0;
+    width: 100%;
+}
+
+.b-problem .map-header .icon-pin {
+    color: #ea4335;
+    font-size: 24px;
+}
+
+.b-problem .map-content {
+    padding: 15px;
+    text-align: left;
+    background: rgba(255,255,255,0.7);
+    width: 100%;
+}
+
+.b-problem .map-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #202124;
+}
+
+.b-problem .map-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #5f6368;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+/* КНОПКА «НЕПОПУЛЯРНА ДУМКА» */ 
+.b-unpopular {
+    background: #fff;
+    color: #000;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    padding: 15px;
+    width: 90%;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    align-self: center;
+}
+
+.fake-post-input {
+    background: #f0f2f5;
+    border-radius: 12px;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    text-align: left;
+    border: 1px solid #e4e6eb;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+    width: 100%;
+}
+
+.b-unpopular .reactions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.b-unpopular .react {
+    background: #f0f2f5;
+    border-radius: 16px;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #65676b;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.b-unpopular .post-text {
+    font-weight: 700;
+    font-size: 16px;
+    text-align: left;
+}
+
+.unpopular-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
+    margin-bottom: 4px;
+}
+
+.unpopular-action {
+    border-left: 1px solid #eee;
+    padding-left: 15px;
+    color: #888;
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* КНОПКИ ВСЬО, THE FUCKING END */ 
+
+
 
 
 /* АНІМАЦІЇ */
