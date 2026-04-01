@@ -967,10 +967,15 @@ body, html {
     font-family: Impact, sans-serif;
     font-size: 20px;
     text-transform: uppercase;
+    flex: 1;
     min-height: 120px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     border-radius: 12px;
     border: 1px solid #b2bec3;
-    flex-direction: column;
 }
 
 /* КНОПКА «НАПИСАТИ АДМІНАМ» (УРОДСЬКА ВЕРСІЯ) */ 
