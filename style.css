@@ -460,6 +460,194 @@ body, html {
     color: #fff;
 }
 
+/* КНОПКА «ЗВЕРНЕННЯ» (ШАНОВНА МІСЬКРАДА) */ 
+.b-petition {
+    background: #fff;
+    color: #c23616;
+    border: 2px solid #c23616;
+    border-radius: 6px;
+    padding: 15px 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    gap: 15px;
+    width: 90%;
+    align-self: center;
+    box-shadow: 4px 4px 0px rgba(194, 54, 22, 0.2);
+}
+
+.b-petition::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: #c23616;
+    width: 12%;
+}
+
+.pet-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.pet-title {
+    font-size: 16px;
+}
+
+.pet-sub {
+    font-size: 11px;
+    color: #666;
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+/* КНОПКА «ЧУТКИ» */
+.rumors-container {
+    position: relative;
+    width: 140px;
+    height: 150px; 
+    margin: 0 auto 15px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    isolation: isolate;
+}
+
+.b-rumors-pillow {
+    background: #FAFAF5;
+    border: 2px solid #000; 
+    border-radius: 40px 40px 30px 30px;
+    width: 100%;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset -5px -5px 15px rgba(0,0,0,0.1), inset 5px 5px 15px #fff;
+    position: relative;
+    z-index: 2;
+    transform-origin: bottom center;
+    animation: pillowSway 0.5s infinite alternate ease-in-out;
+    transition: all 0.3s ease;
+}
+
+.rumors-header {
+    font-family: 'Rubik Doodle Shadow', cursive;
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #FF6B81;
+    line-height: 1;
+}
+
+#rumors-dynamic-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    color: #888;
+    margin-top: 6px;
+    text-align: center;
+}
+
+.sneaker-legs {
+    position: absolute;
+    bottom: -20px;
+    display: flex;
+    gap: 40px;
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+
+.sneaker { 
+    font-size: 34px; 
+    filter: drop-shadow(0px 2px 0px rgba(0,0,0,0.2)); 
+} 
+
+.sneaker.left { animation: stepLeft 0.5s infinite alternate ease-in-out; }
+.sneaker.right { animation: stepRight 0.5s infinite alternate ease-in-out; }
+
+.rumor-arm {
+    position: absolute;
+    top: 40px;
+    font-size: 26px;
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+
+.arm-left { 
+    left: -20px; 
+    transform: scaleX(-1); 
+    animation: armSwingLeft 0.5s infinite alternate ease-in-out; 
+}
+
+.arm-right { 
+    right: -20px; 
+    animation: armSwingRight 0.5s infinite alternate ease-in-out; 
+}
+
+.orbit-ear {
+    position: absolute;
+    font-size: 24px;
+    z-index: 5;
+    opacity: 0;
+    top: 40px;
+    left: -20px;
+    pointer-events: none;
+}
+
+.rumors-container.is-button-mode .b-rumors-pillow {
+    animation: none;
+    height: 85px;
+    border-radius: 24px; 
+    background: #cbe620;
+    box-shadow: 0px 6px 0px #000;
+    transform: translateY(12px);
+}
+
+.rumors-container.is-button-mode:active .b-rumors-pillow {
+    transform: translateY(18px);
+    box-shadow: 0px 0px 0px #000;
+}
+
+.rumors-container.is-button-mode .sneaker-legs,
+.rumors-container.is-button-mode .rumor-arm { 
+    opacity: 0; 
+}
+
+.rumors-container.is-button-mode .orbit-ear {
+    animation: earFly 2.5s ease-in-out forwards;
+}
+
+.rumors-container.is-button-mode .rumors-header {
+    color: #fff;
+    text-shadow: 2px 2px 0px #000;
+    transform: scale(1.05);
+}
+
+.rumors-container.is-button-mode #rumors-dynamic-text {
+    background: transparent;
+    color: #000 !important;
+    box-shadow: none;
+    padding: 0;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-top: 2px;
+}
+
+/* КНОПКА «ВІДПРАВИТИ ФОТО» */ 
+.b-photo {
+    background: #fff;
+    color: #007aff;
+    border-radius: 12px;
+    padding: 15px 30px;
+    font-weight: 600;
+    font-size: 16px;
+    gap: 10px;
+    border: 1px solid #f0f0f0;
+    align-self: center;
+}
 
 
 /* THE FUCKING END
@@ -723,4 +911,35 @@ input, textarea, [contenteditable] {
     -webkit-appearance: none;
     appearance: none;
     outline: none;
+}
+
+/*оптимізація для слабеньких і вузеньких*/
+.b-rumors-pillow,
+.sneaker,
+.rumor-arm,
+.breathe-circle,
+.serious-plus,
+.story-submit,
+.b-complain {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.b-serious,
+.b-story {
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.rumors-container {
+    isolation: isolate;
+}
+
+
+.door-bubble,
+.silence-overlay {
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
 }
