@@ -396,6 +396,72 @@ body, html {
     animation: softPulsePlus 2s infinite ease-in-out;
 }
 
+/* КНОПКА «АТМОСФЕРА» (ПОЛАРОЇД) */ 
+.b-atmosphere {
+    background: #fff;
+    padding: 10px 10px 40px 10px;
+    transform: rotate(2deg);
+    flex-direction: column;
+    border: 1px solid #ddd;
+    box-shadow: 2px 4px 12px rgba(0,0,0,0.1);
+    border-radius: 0; 
+    width: 220px;
+    align-self: center;
+}
+
+.polaroid-pic {
+    width: 200px;
+    height: 200px;
+    background-color: #f5f5f5;
+    background-image: 
+        linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee), 
+        linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+}
+
+.polaroid-text {
+    color: #000;
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+/* КНОПКА «ПОТРІБНА ПОРАДА» */
+.b-advice {
+    background: #fff;
+    border: 2px solid #4A6CA5;
+    border-radius: 30px;
+    padding: 12px 22px;
+    gap: 10px;
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #4A6CA5;
+    box-shadow: 0 4px 12px rgba(74,108,165,0.15);
+    align-self: center;
+}
+
+.b-advice .advice-icon {
+    font-size: 20px;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.b-advice:active {
+    background: #4A6CA5;
+    color: #fff;
+}
+
+.b-advice:active .advice-icon {
+    color: #fff;
+}
+
+
+
 /* THE FUCKING END
    THE FUCKING END
    THE FUCKING END
