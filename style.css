@@ -232,8 +232,9 @@ body, html {
 .main-feed {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    padding: 0 20px 40px 20px;
+    align-items: center;
+    gap: 35px;
+    padding: 10px 20px 80px 20px;
     max-width: 500px;
     margin: 0 auto;
 }
@@ -263,14 +264,16 @@ body, html {
     overflow: hidden;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
-    transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+    transition: transform 0.1s, box-shadow 0.2s, filter 0.15s ease;
     box-sizing: border-box;
     padding: 18px;
     text-decoration: none;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.06);
 }
 
 .btn:active, .simulate-press {
     transform: scale(0.96);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.04);
     filter: brightness(0.9);
 }
 
@@ -280,6 +283,7 @@ body, html {
     width: 100vw;
     margin: 15px calc(-50vw + 50%);
 }
+
 
 
 /* КНОПКА «НАПИСАТИ» */
