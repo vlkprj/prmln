@@ -885,6 +885,226 @@ body, html {
 }
 
 
+/* КНОПКА «ПРОМОВЧАТИ» */
+.b-silence {
+    background: #f5f5f5;
+    color: #555;
+    padding: 12px 25px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    gap: 8px;
+    border: 1px solid #e0e0e0;
+    transition: opacity 0.3s;
+    align-self: center;
+}
+
+/* КНОПКА «ДЕНЬ НАРОДЖЕННЯ» */
+.b-birthday {
+    position: relative;
+    background-color: #002147;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E");
+    flex-direction: column;
+    flex: 1;
+    min-height: 125px;
+    border: 1px solid #1a2c42;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15), inset 0 0 40px rgba(0,0,0,0.2);
+    padding: 15px;
+}
+
+.b-birthday .bd-top {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.8;
+    margin-bottom: 8px;
+    color: #D4CABC;
+    z-index: 2;
+}
+
+.b-birthday .bd-middle,
+.b-birthday .bd-bottom {
+    background-image: linear-gradient(135deg, #DFBE6F 0%, #FCF6BA 25%, #C69A45 50%, #FBF5B7 75%, #B38728 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    position: relative;
+    z-index: 2;
+    padding-bottom: 2px;
+    line-height: 1.2;
+    font-family: 'Bad Script', cursive;
+}
+
+.b-birthday .bd-middle { font-size: 26px; }
+.b-birthday .bd-bottom { font-size: 30px; font-weight: 700; }
+
+.bd-emoji {
+    position: absolute;
+    animation: floatBd 3s infinite ease-in-out;
+}
+
+.e1 { top: 15px; left: 15px; font-size: 20px; animation-delay: 0s; z-index: 1; }
+.e2 { top: 10px; right: 15px; font-size: 22px; animation-delay: 1s; z-index: 1; }
+.e3 { bottom: 10px; right: 30px; font-size: 20px; animation-delay: 2s; opacity: 0.9; z-index: 1; }
+
+/* КНОПКА «МЕМ» */
+.b-meme {
+    background: #dfe6e9;
+    color: #000;
+    font-family: Impact, sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    min-height: 120px;
+    border-radius: 12px;
+    border: 1px solid #b2bec3;
+    flex-direction: column;
+}
+
+/* КНОПКА «НАПИСАТИ АДМІНАМ» (УРОДСЬКА ВЕРСІЯ) */ 
+.b-admins {
+    background: #e0e0e0;
+    border-top: 3px solid #ffffff;
+    border-left: 3px solid #ffffff;
+    border-right: 3px solid #808080;
+    border-bottom: 3px solid #808080;
+    border-radius: 20px;
+    font-family: 'Verdana', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 30px;
+    color: #0000ee;
+    text-decoration: underline;
+    flex-direction: column;
+    margin: 30px auto 0 auto;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    align-self: center;
+}
+
+.admin-subtext {
+    font-size: 10px;
+    font-weight: normal;
+    color: #000;
+    text-decoration: none;
+    display: block;
+    margin-top: 2px;
+}
+
+.b-admins:active {
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    padding: 7px 11px 5px 13px;
+}
+
+
+/* КНОПКА «ЗБІР» */ 
+.b-zbir {
+    background: #fff;
+    color: #000;
+    border-radius: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-height: 120px;
+    border: 2px solid #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.b-zbir .zbir-small {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #666;
+}
+
+.b-zbir .zbir-big { font-weight: 900; font-size: 22px; }
+.b-zbir .zbir-icon-row { display: flex; align-items: center; gap: 2px; }
+
+/* КНОПКА «Є ІДЕЯ» */ 
+.b-idea {
+    background: #fff;
+    color: #000;
+    font-family: 'Space Grotesk', sans-serif;
+    border: 2px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    flex: 1;
+    min-height: 120px;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.idea-icon-small {
+    font-size: 28px;
+    color: #27ae60;
+    background: #eafaf1;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.idea-title-small { font-weight: 900; font-size: 16px; }
+
+/* КНОПКА «ШОПОПАЛО» */
+.b-shopopalo {
+    background: #f0f2f5;
+    padding: 8px 15px;
+    gap: 12px;
+    width: 90%;
+    border: 1px solid #ddd;
+    align-self: center;
+}
+
+.b-shopopalo .avatar {
+    width: 32px;
+    height: 32px;
+    background: #ccc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.b-shopopalo .input-text {
+    color: #65676b;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15px;
+    flex-grow: 1;
+    text-align: left;
+}
+
+/* КНОПКА «ІНШЕ» */ 
+.side-tag {
+    position: fixed;
+    right: 0;
+    top: 40%;
+    background: #B24A3B;
+    color: #fff;
+    padding: 15px 8px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    border-radius: 8px 0 0 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+    box-shadow: -2px 2px 10px rgba(0,0,0,0.15);
+    z-index: 999;
+    will-change: transform;
+}
+
 
 /* КНОПКИ ВСЬО, THE FUCKING END */ 
 
