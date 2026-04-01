@@ -240,21 +240,16 @@ body, html {
 
 .row-container {
     display: flex;
-    gap: 16px;
-    width: 100%;
+    gap: 15px;
+    width: 90%;
+    justify-content: center;
     align-items: stretch;
+    margin: 0 auto;
 }
 
 .row-container .btn {
     flex: 1;
     margin: 0;
-}
-
-.complain-wrapper {
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
 }
 
 /* БАЗОВІ СТИЛІ ДЛЯ ВСІХ КНОПОК */
@@ -281,10 +276,11 @@ body, html {
 
 .neutral-divider {
     border: none;
-    border-top: 1px dashed #ccc;
-    width: 80%;
-    margin: 20px auto;
+    border-top: 1px solid #ccc;
+    width: 100vw;
+    margin: 15px calc(-50vw + 50%);
 }
+
 
 /* КНОПКА «НАПИСАТИ» */
 .b-write-main {
@@ -347,9 +343,19 @@ body, html {
 
 .story-submit {
     align-self: center;
+    background: #000;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 16px;
+    text-transform: uppercase;
     will-change: transform;
     transform: translateZ(0);
+    animation: pulseSubmit 2.5s ease-in-out infinite;
 }
+
 
 .cursor {
     font-weight: bold;
@@ -1103,6 +1109,42 @@ body, html {
     box-shadow: -2px 2px 10px rgba(0,0,0,0.15);
     z-index: 999;
     will-change: transform;
+}
+
+/* ФУТЕР ТА КНОПКА ВГОРУ */ 
+.footer-copy {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+#scroll-fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0; 
+    transition: opacity 0.5s, transform 0.3s;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border: 1px solid #ddd;
+}
+
+#scroll-fab.show {
+    opacity: 1;
+    animation: pulseFab 2s infinite;
 }
 
 
