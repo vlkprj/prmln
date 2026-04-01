@@ -310,3 +310,351 @@ body, html {
     color: #FAFBF5;
     font-size: 20px;
 }
+
+/* КНОПКИ «РОЗКАЗАТИ» ТА «НАПИСАТИ ЩОСЬ СЕРЙОЗНЕ» (СПІЛЬНЕ) */
+.b-story, .b-serious {
+    aspect-ratio: 1 / 1;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 14px;
+    isolation: isolate;
+}
+
+/* КНОПКА «РОЗКАЗАТИ» */
+.b-story {
+    background: #fff;
+    color: #000;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+    align-items: center; 
+    text-align: center;
+}
+
+.story-top-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+    color: #000;
+    letter-spacing: 1px;
+}
+
+.story-typing-area {
+    color: #888;
+    font-family: 'PT Serif', serif;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.story-submit {
+    align-self: center;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.cursor {
+    font-weight: bold;
+    color: #000;
+    animation: blink 1s step-end infinite;
+}
+
+/* КНОПКА «НАПИСАТИ ЩОСЬ СЕРЙОЗНЕ» */
+.b-serious {
+    background: #FAFAF5;
+    border: 2px solid #333;
+    color: #333;
+    font-family: 'PT Serif', serif;
+    line-height: 1.1;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    align-items: flex-start;
+    text-align: left;
+}
+
+.serious-text-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.b-serious .normal-text {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.b-serious .word-serious {
+    font-weight: 700;
+    font-style: italic;
+    font-size: 20px;
+    color: #DA7C5D;
+    margin-top: 5px;
+}
+
+.serious-plus {
+    align-self: center;
+    color: #ccc;
+    font-size: 42px;
+    will-change: transform;
+    transform: translateZ(0);
+    animation: softPulsePlus 2s infinite ease-in-out;
+}
+
+/* THE FUCKING END
+   THE FUCKING END
+   THE FUCKING END
+   THE FUCKING END */ 
+
+
+/* АНІМАЦІЇ */
+@keyframes pillowSway { 0% { transform: skewX(-4deg) rotate(-4deg); } 100% { transform: skewX(4deg) rotate(4deg); } }
+@keyframes stepLeft { 0% { transform: translateY(0) scaleY(0.9); } 100% { transform: translateY(-12px) scaleY(1.1); } }
+@keyframes stepRight { 0% { transform: translateY(-12px) scaleY(1.1); } 100% { transform: translateY(0) scaleY(0.9); } }
+@keyframes armSwingLeft { 0% { transform: scaleX(-1) rotate(15deg); } 100% { transform: scaleX(-1) rotate(-15deg); } }
+@keyframes armSwingRight { 0% { transform: rotate(-15deg); } 100% { transform: rotate(15deg); } }
+@keyframes pressEffect {
+    0% { transform: scale(1); box-shadow: 0px 4px 0px #000; }
+    50% { transform: scale(0.98) translateY(2px); box-shadow: 0px 2px 0px #000; }
+    100% { transform: scale(1); box-shadow: 0px 4px 0px #000; }
+}
+@keyframes earFly {
+    0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+    15% { opacity: 1; transform: translate(-40px, -20px) scale(1.2); }
+    50% { transform: translate(60px, -80px) scale(1.4) rotate(180deg); }
+    85% { opacity: 1; transform: translate(140px, -10px) scale(1) rotate(360deg); }
+    100% { opacity: 0; transform: translate(120px, 0) scale(0.5) rotate(360deg); }
+}
+.cursor { font-weight: bold; animation: blink 1s step-end infinite; color: #888; }
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes softPulsePlus {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.15); opacity: 1; }
+}
+@keyframes breatheAnim {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(2.5); opacity: 1; }
+}
+@keyframes pulseSubmit {
+    0%, 100% { box-shadow: 0 2px 6px rgba(0,0,0,0.2); transform: scale(1); }
+    50% { box-shadow: 0 4px 14px rgba(0,0,0,0.35); transform: scale(1.05); }
+}
+
+@keyframes bubbleFloat {
+    0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+    15% { opacity: 1; transform: translateX(-50%) translateY(-20px); }
+    80% { opacity: 1; transform: translateX(-50%) translateY(-30px); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(-40px); }
+}
+@keyframes shimmerComplain {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes glitterSwipe {
+    0% { left: -75%; }
+    100% { left: 125%; }
+}
+
+@keyframes glitterTwinkle {
+    0%,100% { opacity: 0.6; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(-2px); }
+}
+
+@keyframes glassPop {
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes spinIcon {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+@keyframes doorFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(500px) rotate(45deg); opacity: 0; }
+}
+
+@keyframes epicDoorBreak {
+    0% { transform: scale(1) rotate(0deg); }
+    10% { transform: scale(1.2) rotate(-15deg); }
+    20% { transform: scale(1.1) rotate(15deg); }
+    30% { transform: scale(1.3) rotate(-20deg); }
+    40% { transform: scale(1.2) rotate(20deg); }
+    100% { transform: translateY(600px) rotate(70deg) scale(0.5); opacity: 0; }
+} 
+
+@keyframes flyToMailbox {
+    0% { transform: scale(1) translate(0, 0) rotate(0); opacity: 1; }
+    100% { transform: scale(0.08) translate(250px, -350px) rotate(15deg); opacity: 0; filter: blur(3px); }
+}
+
+@keyframes flyToHole {
+    0% { transform: scale(1) translate(0, 0) rotate(0); opacity: 1; filter: blur(0); }
+    100% { transform: scale(0) translate(120px, 0) rotate(-720deg); opacity: 0; filter: blur(8px); }
+}
+
+@keyframes miniSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+@keyframes thanosSnap {
+    0% { transform: scale(1) translate(0, 0); opacity: 1; filter: blur(0px) contrast(1); }
+    40% { transform: scale(0.8) translate(30px, -5px); opacity: 0.8; filter: blur(2px) contrast(1.1); }
+    100% { transform: scale(0) translate(180px, -15px) rotate(15deg); opacity: 0; filter: blur(15px) contrast(1.5); letter-spacing: 10px; }
+}
+@keyframes thanosSnapSync {
+    0% { transform: scale(1) translate(0, 0); opacity: 1; filter: blur(0px) contrast(1); }
+    30% { transform: scale(0.8) translate(30px, -5px) rotate(2deg); opacity: 0.8; filter: blur(2px) contrast(1.1); }
+    100% { transform: scale(0) translate(180px, -15px) rotate(15deg); opacity: 0; filter: blur(15px) contrast(1.5); letter-spacing: 10px; }
+}
+@keyframes flyUpMailbox {
+    0% { transform: scale(1) translateY(0); opacity: 1; }
+    100% { transform: scale(0.7) translateY(-100px); opacity: 0; filter: blur(4px); }
+}
+
+@keyframes hintVanish {
+    0%   { opacity: 1; filter: blur(0px); letter-spacing: 0px; }
+    100% { opacity: 0; filter: blur(6px); letter-spacing: 5px; }
+}
+
+
+@keyframes glitchCaps {
+    0%, 100% { text-transform: uppercase; }
+    50% { text-transform: lowercase; }
+        }
+
+@keyframes pulseFab {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,0,0,0.2); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0,0,0,0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+        }
+
+@keyframes doorGlitchAnim {
+    0% { transform: translateX(-50%) skew(0deg); }
+    20% { transform: translateX(calc(-50% - 2px)) translateY(1px) skew(-5deg); filter: hue-rotate(90deg); }
+    40% { transform: translateX(calc(-50% + 2px)) translateY(-1px) skew(5deg); filter: hue-rotate(-90deg); }
+    60% { transform: translateX(calc(-50% - 1px)) translateY(2px) skew(-2deg); }
+    80% { transform: translateX(calc(-50% + 1px)) translateY(-2px) skew(2deg); }
+    100% { transform: translateX(-50%) skew(0deg); filter: hue-rotate(0deg); }
+}
+
+@keyframes animeNani {
+    0% { transform: translateX(-50%) scale(1); filter: contrast(1) drop-shadow(0 0 0 red); }
+    10% { transform: translateX(-50%) scale(1.5) rotate(-5deg); filter: contrast(2) drop-shadow(0 0 20px red); }
+    20% { transform: translateX(-50%) scale(1.4) rotate(5deg); }
+    30% { transform: translateX(-50%) scale(1.6) rotate(-5deg); }
+    100% { transform: translateX(-50%) scale(1); filter: contrast(1) drop-shadow(0 0 0 transparent); }
+}
+
+@keyframes matrixGlitch {
+    0% { transform: translateX(-50%); filter: hue-rotate(0deg); }
+    20% { transform: translateX(calc(-50% - 5px)) translateY(5px); filter: hue-rotate(90deg); }
+    40% { transform: translateX(calc(-50% - 5px)) translateY(-5px) skewX(20deg); }
+    60% { transform: translateX(calc(-50% + 5px)) translateY(5px) skewX(-20deg); filter: hue-rotate(180deg); opacity: 0.5; }
+    80% { transform: translateX(calc(-50% + 5px)) translateY(-5px); opacity: 1; }
+    100% { transform: translateX(-50%) skewX(0); filter: hue-rotate(0deg); }
+}
+
+@keyframes strangerThingsFlip {
+    0% { transform: translateX(-50%) rotateX(0deg); filter: invert(0); }
+    50% { transform: translateX(-50%) rotateX(180deg) scale(0.8); filter: invert(0.8) sepia(1) hue-rotate(200deg); }
+    100% { transform: translateX(-50%) rotateX(0deg); filter: invert(0); }
+}
+
+@keyframes blackHoleSuck {
+    0% { transform: translateX(-50%) scale(1) rotate(0deg); }
+    50% { transform: translateX(-50%) scale(0) rotate(720deg); filter: blur(5px); }
+    100% { transform: translateX(-50%) scale(1) rotate(0deg); filter: blur(0); }
+}
+
+@keyframes doorEarthquake {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(calc(-50% - 4px)) rotate(-4deg); }
+    20%, 40%, 60%, 80% { transform: translateX(calc(-50% + 4px)) rotate(4deg); }
+}
+
+@keyframes doorAcidTrip {
+    0% { transform: translateX(-50%) scale(1); filter: hue-rotate(0deg) saturate(1); }
+    25% { transform: translateX(-50%) scale(1.1); filter: hue-rotate(90deg) saturate(2); }
+    50% { transform: translateX(-50%) scale(0.9); filter: hue-rotate(180deg) saturate(3) drop-shadow(0 0 20px magenta); }
+    75% { transform: translateX(-50%) scale(1.15); filter: hue-rotate(270deg) saturate(2); }
+    100% { transform: translateX(-50%) scale(1); filter: hue-rotate(360deg) saturate(1); }
+}
+
+@keyframes doorHologram {
+    0% { transform: translateX(-50%); filter: sepia(1) hue-rotate(150deg) saturate(3) opacity(0.8); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(calc(-50% - 2px)) skewX(5deg); filter: sepia(1) hue-rotate(150deg) saturate(3) opacity(0.4); }
+    20%, 40%, 60%, 80% { transform: translateX(calc(-50% + 2px)) skewX(-5deg); filter: sepia(1) hue-rotate(150deg) saturate(3) opacity(0.9); }
+    100% { transform: translateX(-50%); filter: sepia(0) hue-rotate(0deg) saturate(1) opacity(1); }
+}
+
+@keyframes doorVoid {
+    0% { transform: translateX(-50%) scale(1); filter: contrast(1) brightness(1); }
+    10% { transform: translateX(-50%) scale(0.95); filter: contrast(10) brightness(0) drop-shadow(0 0 10px rgba(0,0,0,0.5)); }
+    90% { transform: translateX(-50%) scale(0.95); filter: contrast(10) brightness(0) drop-shadow(0 0 10px rgba(0,0,0,0.5)); }
+    100% { transform: translateX(-50%) scale(1); filter: contrast(1) brightness(1); }
+}
+
+@keyframes modalPop {
+    to { transform: translateY(0); }
+}
+
+@keyframes suckIntoHole {
+    0% { transform: scale(1) rotate(0deg); opacity: 1; }
+    100% { transform: scale(0) rotate(-120deg); opacity: 0; }
+}
+
+
+@keyframes floatBd {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(8deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes swipePulse {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(8px); }
+}
+
+/*МЕДІА запити*/
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+@media (max-width: 400px) {
+    .vollkorn-valk { font-size: 24px; }
+    .vollkorn-pryim { font-size: 32px; }
+    .anon-logo-wrap { width: 60px; height: 60px; }
+    .top-left-crest { width: 50px; }
+    
+    .submit-content { padding: 10px 16px 24px 16px; }
+    .submit-editor { min-height: 140px; font-size: 15px; }
+    .sent-text { font-size: 17px; }
+}
+
+@media (max-width: 390px) {
+    .header-main-title { font-size: 20px; }
+    .tiktok-subtitle { font-size: 14px; padding: 0 10px; }
+    .serious-text-wrapper .normal-text { font-size: 22px; }
+    .serious-text-wrapper .word-serious { font-size: 22px; }
+    .b-capslock .bottom { font-size: 22px; }
+    .b-zbir .zbir-big { font-size: 18px; }
+    .b-meme { font-size: 16px; }
+    .btn { padding: 12px 15px; }
+    .row-container { gap: 10px; }
+    .breathe-msg { margin-top: 180px; }
+}
+*, *::before, *::after {
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+input, textarea, [contenteditable] {
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+}
