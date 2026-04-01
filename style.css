@@ -2556,6 +2556,387 @@ body.submit-open {
 }
 
 
+/* КАРТКИ ПРЕВ'Ю ТА МЕТАДАНІ */
+.preview-post-card {
+    width: 100%;
+    max-width: 400px;
+    min-height: 80px;
+    border-radius: 16px;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 1.6;
+    word-break: break-word;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.submit-overlay.hole-mode .preview-post-card {
+    background: rgba(255,255,255,0.95);
+    color: #1a1a1a;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+}
+
+.valky-card {
+    flex: 0 0 100%;
+    aspect-ratio: 1080 / 1350;
+    border-radius: 16px;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.submit-overlay.hole-mode .valky-card {
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+}
+
+.valky-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.4;
+    flex-shrink: 0;
+}
+
+.valky-card-header img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: #FAFAF5;
+    padding: 2px;
+}
+
+.valky-card-header-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #1D3561;
+    padding: 6px 14px 6px 6px;
+    border-radius: 30px;
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    flex-shrink: 0;
+}
+
+.valky-card-header-pill img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #FAFAF5;
+    padding: 2px;
+    object-fit: contain;
+}
+
+.pill-yellow { color: #FFDA59; }
+.pill-white { color: #ffffff; }
+
+.valky-card-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    word-break: break-word;
+    white-space: pre-wrap;
+    padding-bottom: 50px;
+}
+
+.valky-card-body.fs-huge { font-size: 36px; line-height: 1.3; font-weight: 400; }
+.valky-card-body.fs-large { font-size: 26px; line-height: 1.4; font-weight: 400; }
+.valky-card-body.fs-medium { font-size: 20px; line-height: 1.5; font-weight: 400; }
+.valky-card-body.fs-small { font-size: 16px; line-height: 1.5; font-weight: 400; }
+
+.valky-card-photo-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 30px; 
+    min-height: 0;
+}
+
+.valky-card-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.valky-card-arrow {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    opacity: 0.4;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+}
+
+.valky-card-author {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: inherit;
+    opacity: 0.6;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.festive-birthday-card {
+    background: #FAF8F4;
+    border: 3px solid #FFDA59;
+    position: relative;
+    overflow: hidden;
+}
+
+.festive-birthday-card::before {
+    content: "🎈 ✨ 🎁 🎂 🎉 🎁 🎈 ✨ 🎉 🎂 ✨ 🎉 🎁 🎈 🎂 🎉 🎂 ✨ 🎁 🎈 🎈 🎁 🎉 🎂 ✨ 🎁 ✨ 🎈 🎉 🎂 🎂 🎈 🎁 ✨ 🎉 🎉 🎂 ✨ 🎈 🎁 🎁 ✨ 🎉 🎂 🎈 ✨ 🎈 🎂 🎁 🎉 🎉 🎁 ✨ 🎈 🎂 🎂 ✨ 🎈 🎉 🎁 🎈 🎂 🎉 🎁 ✨ 🎁 🎉 ✨ 🎂 🎈 ✨ 🎁 🎈 🎂 🎉 🎂 🎉 🎁 ✨ 🎈 🎈 🎂 ✨ 🎉 🎁 🎁 ✨ 🎈 🎂 🎉 🎉 🎈 🎂 ✨ 🎁 🎈 ✨ 🎁 🎂 🎉 🎁 🎈 ✨ 🎉 🎂 ✨ 🎉 🎁 🎈 🎂 🎉 🎂 ✨ 🎁 🎈 🎈 🎁 🎉 🎂 ✨ 🎁 ✨ 🎈 🎉 🎂 🎂 🎈 🎁 ✨ 🎉 🎉 🎂 ✨ 🎈 🎁 🎁 ✨ 🎉 🎂 🎈 ✨ 🎈 🎂 🎁 🎉";
+    position: absolute;
+    top: -30%; left: -20%; right: -20%; bottom: -30%;
+    font-size: 30px;
+    line-height: 2.2;
+    letter-spacing: 28px;
+    word-break: break-all;
+    text-align: justify;
+    opacity: 0.08;
+    transform: rotate(-10deg) scale(1.2);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.festive-birthday-card > * { z-index: 1; }
+.festive-birthday-card > *:not(.valky-card-author) { position: relative; }
+
+.preview-swipe-hint {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    min-height: 35px;
+}
+
+.preview-swipe-hint:not(:empty)::before {
+    content: "👉 Гортай";
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 8px 20px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: swipePulse 2s infinite ease-in-out;
+}
+
+.submit-overlay.mailbox-mode .preview-swipe-hint:not(:empty)::before,
+.photo-overlay .preview-swipe-hint:not(:empty)::before,
+.atmo-overlay .preview-swipe-hint:not(:empty)::before {
+    background: rgba(255, 255, 255, 0.85);
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.preview-meta-line {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #aaa;
+    width: 100%;
+    max-width: 400px;
+    text-align: right;
+    margin-top: 8px;
+    opacity: 1;
+}
+
+/* БАБЛИ ДВЕРЕЙ ТА ПЕРЕДБАЧЕННЯ */
+.door-bubble {
+    position: fixed;
+    background: #fff;
+    border: 2px solid #000;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow: 2px 2px 0px #000;
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+    animation: bubbleFloat 2s ease-out forwards;
+    max-width: 220px;
+    white-space: normal;
+    text-align: center;
+    word-wrap: break-word;
+    will-change: transform, opacity;
+}
+
+.door-splinter {
+    position: fixed;
+    width: 6px;
+    height: 4px;
+    background: #8B5A2B;
+    border-radius: 1px;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+}
+
+.door-ghost {
+    position: fixed;
+    font-size: 24px;
+    pointer-events: none;
+    z-index: 9999;
+    filter: drop-shadow(0 0 5px rgba(100,200,255,0.8));
+}
+
+.prediction-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    z-index: 1500;
+    background: #FAFAF5;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    border: 2px solid #1D3561;
+    animation: glassPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    max-width: 300px;
+    width: 90%;
+    text-align: center;
+}
+
+.prediction-card-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #1a1a1a;
+}
+
+/* =========================================
+   ДИНАМІЧНІ ТА HTML ЕЛЕМЕНТИ (ХЕДЕРИ, ТОСТИ)
+   ========================================= */
+.valky-toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: #1a1a1a;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 99999;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.valky-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.submit-header, .preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 24px;
+    box-sizing: border-box;
+    z-index: 50;
+}
+
+.submit-overlay-title, .preview-label, .caps-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #888;
+}
+
+.anon-block {
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,0,0.05);
+    border-radius: 12px;
+    padding: 4px 12px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.submit-overlay.hole-mode .anon-block {
+    background: rgba(255,255,255,0.05);
+}
+
+.anon-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #666;
+}
+
+.submit-overlay.hole-mode .anon-badge { color: #aaa; }
+
+.anon-divider {
+    width: 1px;
+    height: 18px;
+    background: rgba(128,128,128,0.2);
+    margin: 0 12px;
+}
+
+.char-counter-wrap {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #888;
+    font-weight: 600;
+}
+
+.door-broken-hole {
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
+    transform: scale(0.9) rotate(5deg);
+}
+
+.fly-to-mailbox {
+    animation: flyToMailbox 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.fly-to-hole {
+    animation: flyToHole 4.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+
 /* АНІМАЦІЇ */
 @keyframes pillowSway { 0% { transform: skewX(-4deg) rotate(-4deg); } 100% { transform: skewX(4deg) rotate(4deg); } }
 @keyframes stepLeft { 0% { transform: translateY(0) scaleY(0.9); } 100% { transform: translateY(-12px) scaleY(1.1); } }
