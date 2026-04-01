@@ -1444,6 +1444,20 @@ body.submit-open {
     max-width: 100%;
 }
 
+.submit-editor:empty::before {
+    content: attr(data-placeholder);
+    pointer-events: none;
+}
+
+.submit-overlay.mailbox-mode .submit-editor:empty::before {
+    color: #bbb;
+}
+
+.submit-overlay.hole-mode .submit-editor:empty::before {
+    color: #444;
+}
+
+
 .submit-overlay.mailbox-mode .submit-editor {
     background: #fff;
     color: #1a1a1a;
@@ -1614,9 +1628,52 @@ body.submit-open {
     box-shadow: 0 4px 15px rgba(244, 199, 62, 0.2);
 }
 
+.inline-done-btn.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.inline-done-btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.inline-done-btn:disabled {
+    background: rgba(128, 128, 128, 0.1);
+    color: rgba(128, 128, 128, 0.4);
+    box-shadow: none;
+    cursor: default;
+    pointer-events: none;
+}
+
+
 /* ПАНЕЛЬ ІНСТРУМЕНТІВ, ПРИКРІПЛЕННЯ ТА ЕКРАН УСПІХУ */
 
 /* 1. ТУЛБАР ТА ФОРМАТУВАННЯ */
+
+.editor-top-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(128,128,128,0.12);
+    flex-wrap: nowrap;
+}
+
+.submit-overlay.mailbox-mode .editor-top-bar { background: rgba(0,0,0,0.03); }
+.submit-overlay.hole-mode .editor-top-bar { background: rgba(255,255,255,0.03); }
+
+.editor-bottom-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-top: 1px solid rgba(128,128,128,0.12);
+    flex-wrap: wrap;
+}
+
+.submit-overlay.mailbox-mode .editor-bottom-bar { background: rgba(0,0,0,0.02); }
+.submit-overlay.hole-mode .editor-bottom-bar { background: rgba(255,255,255,0.02); }
+
 .editor-toolbar-row {
     display: flex;
     align-items: center;
@@ -2908,6 +2965,31 @@ body.submit-open {
 }
 
 .submit-overlay.hole-mode .anon-badge { color: #aaa; }
+
+.submit-overlay.hole-mode .anon-identity-block .submit-name-input,
+.submit-overlay.hole-mode .submit-meta .submit-name-input,
+.submit-overlay.hole-mode .anon-label,
+.submit-overlay.hole-mode .submit-anon-badge {
+    color: #ccc;
+}
+
+.submit-overlay.hole-mode .anon-identity-block .submit-name-input::placeholder,
+.submit-overlay.hole-mode .submit-meta .submit-name-input::placeholder {
+    color: rgba(255,255,255,0.4);
+}
+
+.submit-overlay.mailbox-mode .anon-identity-block .submit-name-input,
+.submit-overlay.mailbox-mode .submit-meta .submit-name-input,
+.submit-overlay.mailbox-mode .anon-label,
+.submit-overlay.mailbox-mode .submit-anon-badge {
+    color: #fff;
+}
+
+.submit-overlay.mailbox-mode .anon-identity-block .submit-name-input::placeholder,
+.submit-overlay.mailbox-mode .submit-meta .submit-name-input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
 
 .anon-divider {
     width: 1px;
