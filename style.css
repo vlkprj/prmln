@@ -1290,6 +1290,20 @@ body.submit-open {
     position: relative;
 }
 
+/* Фони обгортки редактора в різних режимах */
+.submit-overlay.mailbox-mode .submit-editor-wrap {
+    border: 1px solid rgba(0,0,0,0.12);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    background: #fff;
+}
+
+.submit-overlay.hole-mode .submit-editor-wrap {
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 2px 24px rgba(0,0,0,0.5);
+    background: #1a1a1a;
+}
+
+
 .photo-overlay .submit-content,
 .atmo-overlay .submit-content {
     justify-content: center;
@@ -2039,6 +2053,12 @@ body.submit-open {
     background: transparent;
 }
 
+.submit-overlay.mailbox-mode .submit-sent-screen,
+.submit-overlay.hole-mode .submit-sent-screen,
+.submit-overlay .submit-preview-screen {
+    background: transparent !important;
+}
+
 .sent-text {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 900;
@@ -2084,6 +2104,7 @@ body.submit-open {
     animation: miniSpin 1s linear infinite;
     display: block;
 }
+
 
 /* ВІДПОАВИТИ ФОТО */
 .photo-drop-zone {
