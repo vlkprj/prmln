@@ -1473,10 +1473,27 @@ body.submit-open {
 
 
 /* 3. ХРЕСТИКИ ТА КНОПКИ ЗАКРИТТЯ */
-.close-submit, #close-atmo, #close-photo {
-    cursor: pointer;
+.submit-header {
+    justify-content: flex-end;
+    position: relative;
+    width: 100%;
+}
+
+.submit-overlay-title {
+    display: none;
+}
+
+.close-submit, 
+#close-atmo, 
+#close-photo {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
     width: 44px;
     height: 44px;
+    z-index: 101;
+    cursor: pointer;
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
     border-radius: 50%;
@@ -1484,10 +1501,8 @@ body.submit-open {
     align-items: center;
     justify-content: center;
     transition: background 0.2s;
-    font-size: 20px;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-    z-index: 100;
 }
 
 .close-submit:active, #close-atmo:active, #close-photo:active {
@@ -2240,6 +2255,40 @@ body.submit-open {
     margin-bottom: 20px;
 }
 
+.atmo-layout-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.atmo-layout-btn {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: #888;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.atmo-layout-btn.active {
+    background: #1a1a1a;
+    color: #FFDA59;
+    border-color: #1a1a1a;
+}
+
+.atmo-layout-btn:active {
+    transform: scale(0.96);
+}
+
 .atmo-slot {
     position: relative;
     aspect-ratio: 1;
@@ -2257,7 +2306,6 @@ body.submit-open {
     height: 100%;
     object-fit: cover;
 }
-
 
 .atmo-stage--single-polaroid,
 .atmo-stage--two-polaroid {
@@ -2450,6 +2498,7 @@ body.submit-open {
     margin-bottom: 20px;
     pointer-events: auto;
 }
+
 
 /* РЮКЗАК ТА АЧІВКИ */
 .bag-btn {
@@ -3132,7 +3181,18 @@ body.submit-open {
     transform: translateX(-50%) translateY(0);
 }
 
-.submit-header, .preview-header {
+.submit-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    padding: 20px 24px;
+    box-sizing: border-box;
+    z-index: 50;
+    position: relative;
+}
+
+.preview-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -3142,12 +3202,16 @@ body.submit-open {
     z-index: 50;
 }
 
-.submit-overlay-title, .preview-label, .caps-label {
+.preview-label, .caps-label {
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 1px;
     color: #888;
+}
+
+.submit-overlay-title {
+    display: none;
 }
 
 .anon-block {
@@ -3202,7 +3266,6 @@ body.submit-open {
     color: rgba(255,255,255,0.6);
 }
 
-
 .anon-divider {
     width: 1px;
     height: 18px;
@@ -3213,8 +3276,82 @@ body.submit-open {
 .char-counter-wrap {
     font-family: 'Inter', sans-serif;
     font-size: 11px;
-    color: #888;
     font-weight: 600;
+    color: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    flex-shrink: 0;
+    transition: color 0.2s;
+}
+
+.submit-overlay.hole-mode .char-counter-wrap {
+    color: rgba(255,255,255,0.25);
+}
+
+.char-counter-wrap.over-limit {
+    color: #e74c3c;
+}
+
+.char-counter-wrap.over-limit::after {
+    content: '+';
+    font-size: 10px;
+    margin-left: 2px;
+    color: #e74c3c;
+}
+
+.submit-hint-text {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 30px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    width: auto;
+    max-width: 90%;
+    text-align: center;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+    transition: opacity 0.5s ease-out, filter 0.5s ease-out, letter-spacing 0.5s ease-out;
+}
+
+.submit-hint-text.vanish {
+    opacity: 0;
+    filter: blur(6px);
+    letter-spacing: 5px;
+}
+
+.ios-keyboard-done {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    z-index: 99999;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ios-keyboard-done.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
 }
 
 .door-broken-hole {
@@ -3223,12 +3360,13 @@ body.submit-open {
 }
 
 .fly-to-mailbox {
-    animation: flyToMailbox 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: flyToMailbox 1s cubic-bezier(0.5, 0, 0.2, 1) forwards;
 }
 
 .fly-to-hole {
-    animation: flyToHole 4.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: thanosSnapSync 1.5s cubic-bezier(0.5, 0, 0.2, 1) forwards;
 }
+
 
 
 /* АНІМАЦІЇ */
