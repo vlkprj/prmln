@@ -3202,13 +3202,28 @@ body.submit-open {
     z-index: 50;
 }
 
-.submit-overlay-title, .preview-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    color: rgba(255, 255, 255, 0.7);
+.submit-overlay-title, .atmo-overlay-title, .photo-overlay-title {
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
+
+.preview-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #aaa;
+    text-transform: uppercase;
+}
+
 
 .anon-block {
     width: 100%;
