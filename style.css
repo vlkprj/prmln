@@ -2244,6 +2244,10 @@ body.submit-open {
 
 
 /* АТМОСФЕРА */
+.atmo-overlay {
+    background: #f0ede8;
+}
+
 .atmo-stage {
     width: 100%;
     max-width: 400px;
@@ -2257,32 +2261,38 @@ body.submit-open {
 
 .atmo-layout-row {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     justify-content: center;
     margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px;
 }
 
 .atmo-layout-btn {
+    flex: 1;
     background: #fff;
     border: 1px solid #ddd;
-    border-radius: 20px;
-    padding: 8px 12px;
+    border-radius: 16px;
+    padding: 12px 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
     font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    color: #888;
+    font-size: 11px;
+    font-weight: 700;
+    color: #444;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
 .atmo-layout-btn.active {
     background: #1a1a1a;
     color: #FFDA59;
     border-color: #1a1a1a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transform: translateY(-2px);
 }
 
 .atmo-layout-btn:active {
@@ -2498,7 +2508,6 @@ body.submit-open {
     margin-bottom: 20px;
     pointer-events: auto;
 }
-
 
 /* РЮКЗАК ТА АЧІВКИ */
 .bag-btn {
@@ -3155,7 +3164,7 @@ body.submit-open {
 }
 
 /* =========================================
-   ДИНАМІЧНІ ТА HTML ЕЛЕМЕНТИ (ХЕДЕРИ, ТОСТИ)
+   ДИНАМІЧНІ ТА HTML ЕЛЕМЕНТИ (АН ОНІМНІСТЬ, ПРАВИЛА, ТОСТИ)
    ========================================= */
 .valky-toast {
     position: fixed;
@@ -3183,13 +3192,13 @@ body.submit-open {
 
 .submit-header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 20px 24px;
     box-sizing: border-box;
     z-index: 50;
-    position: relative;
+    min-height: 60px;
 }
 
 .preview-header {
@@ -3202,32 +3211,32 @@ body.submit-open {
     z-index: 50;
 }
 
-.preview-label, .caps-label {
+.submit-overlay-title, .preview-label {
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 1px;
-    color: #888;
-}
-
-.submit-overlay-title {
-    display: none;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .anon-block {
     display: flex;
     align-items: center;
-    background: rgba(0,0,0,0.05);
-    border-radius: 12px;
-    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 8px 16px;
     width: 100%;
     max-width: 400px;
     box-sizing: border-box;
     margin-top: 10px;
 }
 
-.submit-overlay.hole-mode .anon-block {
-    background: rgba(255,255,255,0.05);
+.anon-identity-block {
+    display: flex;
+    align-items: center;
+    flex: 1;
 }
 
 .anon-badge {
@@ -3237,121 +3246,76 @@ body.submit-open {
     font-family: 'Inter', sans-serif;
     font-size: 13px;
     font-weight: 700;
-    color: #666;
+    color: #ffffff;
 }
 
-.submit-overlay.hole-mode .anon-badge { color: #aaa; }
-
-.submit-overlay.hole-mode .anon-identity-block .submit-name-input,
-.submit-overlay.hole-mode .submit-meta .submit-name-input,
-.submit-overlay.hole-mode .anon-label,
-.submit-overlay.hole-mode .submit-anon-badge {
-    color: #ccc;
+.submit-overlay.hole-mode .anon-badge {
+    color: #cccccc;
 }
 
-.submit-overlay.hole-mode .anon-identity-block .submit-name-input::placeholder,
-.submit-overlay.hole-mode .submit-meta .submit-name-input::placeholder {
-    color: rgba(255,255,255,0.4);
-}
-
-.submit-overlay.mailbox-mode .anon-identity-block .submit-name-input,
-.submit-overlay.mailbox-mode .submit-meta .submit-name-input,
-.submit-overlay.mailbox-mode .anon-label,
-.submit-overlay.mailbox-mode .submit-anon-badge {
-    color: #fff;
-}
-
-.submit-overlay.mailbox-mode .anon-identity-block .submit-name-input::placeholder,
-.submit-overlay.mailbox-mode .submit-meta .submit-name-input::placeholder {
-    color: rgba(255,255,255,0.6);
+.anon-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .anon-divider {
     width: 1px;
     height: 18px;
-    background: rgba(128,128,128,0.2);
+    background: rgba(255, 255, 255, 0.15);
     margin: 0 12px;
+}
+
+.submit-name-input {
+    flex: 1;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #ffffff;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+}
+
+.submit-name-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .char-counter-wrap {
     font-family: 'Inter', sans-serif;
     font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
     font-weight: 600;
-    color: rgba(0,0,0,0.3);
-    display: flex;
-    align-items: center;
-    gap: 1px;
-    flex-shrink: 0;
-    transition: color 0.2s;
 }
 
-.submit-overlay.hole-mode .char-counter-wrap {
-    color: rgba(255,255,255,0.25);
-}
-
-.char-counter-wrap.over-limit {
-    color: #e74c3c;
-}
-
-.char-counter-wrap.over-limit::after {
-    content: '+';
-    font-size: 10px;
-    margin-left: 2px;
-    color: #e74c3c;
-}
-
-.submit-hint-text {
-    position: absolute;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 8px 20px;
-    border-radius: 30px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    width: auto;
-    max-width: 90%;
-    text-align: center;
-    z-index: 100;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    pointer-events: none;
-    transition: opacity 0.5s ease-out, filter 0.5s ease-out, letter-spacing 0.5s ease-out;
-}
-
-.submit-hint-text.vanish {
-    opacity: 0;
-    filter: blur(6px);
-    letter-spacing: 5px;
-}
-
-.ios-keyboard-done {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #1a1a1a;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 25px;
+.rules-disclaimer {
+    color: rgba(255, 255, 255, 0.6);
     font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    z-index: 99999;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(20px);
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.ios-keyboard-done.show {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
+.rules-disclaimer a {
+    color: #ffffff;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.rules-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 .door-broken-hole {
@@ -3360,12 +3324,13 @@ body.submit-open {
 }
 
 .fly-to-mailbox {
-    animation: flyToMailbox 1s cubic-bezier(0.5, 0, 0.2, 1) forwards;
+    animation: flyToMailbox 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 .fly-to-hole {
-    animation: thanosSnapSync 1.5s cubic-bezier(0.5, 0, 0.2, 1) forwards;
+    animation: flyToHole 4.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
+
 
 
 
