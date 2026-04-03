@@ -1261,6 +1261,34 @@ body.submit-open {
     touch-action: none;
 }
 
+.submit-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.submit-overlay.hole-mode .submit-video-bg {
+    filter: brightness(0.45);
+}
+
+.submit-overlay .submit-preview-screen { 
+    background: transparent; 
+}
+
+.atmo-overlay .submit-preview-screen { background: #f0ede8; }
+.photo-overlay .submit-preview-screen { background: #fff; }
+.photo-overlay.hole-mode .submit-preview-screen { background: #080C0C; }
+
+.submit-overlay.hole-mode::before {
+    opacity: 0.04;
+}
+
+
 /* 2. ПЛАШКИ ТА КОНТЕЙНЕРИ */
 .submit-content {
     position: relative;
@@ -1279,6 +1307,10 @@ body.submit-open {
     -webkit-overflow-scrolling: touch;
 }
 
+.submit-content, .atmo-content, .photo-content, .caps-content {
+    padding-bottom: 30px; 
+}
+
 .submit-editor-wrap {
     width: 100%;
     max-width: 420px;
@@ -1290,7 +1322,6 @@ body.submit-open {
     position: relative;
 }
 
-/* Фони обгортки редактора в різних режимах */
 .submit-overlay.mailbox-mode .submit-editor-wrap {
     border: 1px solid rgba(0,0,0,0.12);
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
@@ -1303,7 +1334,6 @@ body.submit-open {
     background: #1a1a1a;
 }
 
-
 .photo-overlay .submit-content,
 .atmo-overlay .submit-content {
     justify-content: center;
@@ -1313,11 +1343,6 @@ body.submit-open {
 .photo-overlay .submit-editor-wrap,
 .atmo-overlay .submit-editor-wrap {
     display: none;
-}
-
-
-.submit-overlay.hole-mode .submit-editor-wrap {
-    box-shadow: 0 2px 24px rgba(0,0,0,0.5);
 }
 
 .bag-panel {
@@ -1368,16 +1393,26 @@ body.submit-open {
 }
 
 .preview-post-card {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
     width: 100%;
     max-width: 400px;
-    min-height: 80px;
-    border-radius: 16px;
-    padding: 20px;
-    box-sizing: border-box;
-    font-size: 16px;
-    line-height: 1.6;
-    word-break: break-word;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    -webkit-overflow-scrolling: touch;
+}
+
+.preview-post-card::-webkit-scrollbar { 
+    display: none; 
+}
+
+.submit-preview-screen .valky-card,
+.submit-preview-screen .preview-post-card {
+    flex-shrink: 0;
+    height: max-content;
 }
 
 .valky-card {
@@ -1398,12 +1433,44 @@ body.submit-open {
     box-shadow: 0 8px 40px rgba(0,0,0,0.6);
 }
 
+.valky-card-body {
+    padding-bottom: 50px; 
+}
+
+.valky-card-arrow {
+    bottom: 45px;
+}
+
+.valky-card-photo-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 30px; 
+    min-height: 0;
+}
+
+.valky-card-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.caps-preview-card,
+.atmo-preview-card, 
+.photo-preview-card {
+    border: none;
+}
+
 .festive-birthday-card {
     background: #FAF8F4;
     border: 3px solid #FFDA59;
     position: relative;
     overflow: hidden;
 }
+
 
 /* 3. ХРЕСТИКИ ТА КНОПКИ ЗАКРИТТЯ */
 .close-submit, #close-atmo, #close-photo {
@@ -1587,18 +1654,21 @@ body.submit-open {
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
+.submit-action-btn {
+    position: relative;
+    z-index: 150;
+}
+
+.submit-content .submit-action-btn {
+    bottom: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .close-sent-btn {
     margin-top: 10px;
     padding: 12px 36px;
     font-size: 15px;
-}
-
-.submit-overlay.mailbox-mode .submit-action-btn {
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
 }
 
 .submit-overlay.hole-mode .submit-action-btn,
@@ -1610,13 +1680,14 @@ body.submit-open {
     box-shadow: 0 4px 16px rgba(0,0,0,0.4);
 }
 
-.preview-edit-btn {
-    padding: 8px 16px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 14px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
+.submit-overlay.mailbox-mode .submit-action-btn,
+.submit-overlay.mailbox-mode .preview-edit-btn,
+.photo-overlay .submit-action-btn,
+.atmo-overlay .submit-action-btn,
+.atmo-preview-screen .preview-edit-btn,
+.photo-preview-screen .preview-edit-btn,
+#atmo-preview-edit-btn,
+#photo-preview-edit-btn {
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1625,13 +1696,37 @@ body.submit-open {
     box-shadow: 0 4px 16px rgba(0,0,0,0.2);
 }
 
-.preview-edit-btn:active {
-    background: rgba(0, 0, 0, 0.7);
+.preview-edit-btn,
+#atmo-preview-edit-btn,
+#photo-preview-edit-btn {
+    padding: 8px 16px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    position: relative;
+    z-index: 1006;
+}
+
+.preview-edit-btn:active,
+#atmo-preview-edit-btn:active,
+#photo-preview-edit-btn:active {
+    background: rgba(0, 0, 0, 0.8);
     transform: scale(0.95);
 }
 
+#atmo-preview-send-btn {
+    position: relative;
+    z-index: 1010;
+    bottom: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    pointer-events: auto;
+}
+
 .toolbar-attach-btn {
-    background: none;
+    background: transparent;
     border: none;
     cursor: pointer;
     padding: 6px 8px;
@@ -1699,34 +1794,28 @@ body.submit-open {
     pointer-events: none;
 }
 
-.atmo-overlay .submit-action-btn,
-.photo-overlay .submit-action-btn {
-    background: #1a1a1a;
-    color: #fff;
-    border: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    z-index: 100;
+.preview-header {
+    position: relative;
+    z-index: 1005;
 }
 
-#atmo-preview-edit-btn,
-#photo-preview-edit-btn {
-    padding: 8px 16px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 14px;
-    border-radius: 20px;
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+.close-submit, #close-atmo, #close-photo, #close-caps {
+    width: 44px;
+    height: 44px;
+    z-index: 101;
 }
 
-.atmo-overlay .preview-edit-btn:active,
-.photo-overlay .preview-edit-btn:active {
-    background: rgba(0, 0, 0, 0.8);
-    transform: scale(0.95);
+.photo-overlay .close-submit,
+.atmo-overlay .close-submit {
+    color: #888;
+    opacity: 1;
 }
+
+.preview-edit-btn, .atmo-overlay-title, .photo-overlay-title {
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
 
 
 
