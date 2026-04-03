@@ -3211,66 +3211,125 @@ body.submit-open {
 }
 
 .anon-block {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 14px;
-    padding: 8px 16px;
     width: 100%;
     max-width: 400px;
-    box-sizing: border-box;
     margin-top: 10px;
-}
-
-.anon-identity-block {
     display: flex;
     align-items: center;
-    flex: 1;
+    background: rgba(24, 24, 28, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 4px 16px;
+    box-sizing: border-box;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+
+.anon-block:focus-within {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(24, 24, 28, 0.9);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 .anon-badge {
     display: flex;
     align-items: center;
     gap: 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    pointer-events: none;
+    user-select: none;
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 600;
     color: #ffffff;
 }
 
-.submit-overlay.hole-mode .anon-badge {
-    color: #cccccc;
-}
-
-.anon-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.8);
+.anon-badge .material-symbols-outlined {
+    font-size: 18px;
+    color: #ffffff;
 }
 
 .anon-divider {
     width: 1px;
     height: 18px;
     background: rgba(255, 255, 255, 0.15);
-    margin: 0 12px;
+    margin: 0 14px;
+    flex-shrink: 0;
 }
 
-.submit-name-input {
+.anon-name-input-field {
     flex: 1;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    color: #ffffff;
     background: transparent;
     border: none;
+    padding: 14px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
     outline: none;
-    padding: 0;
+    min-width: 0;
 }
 
-.submit-name-input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+.anon-name-input-field::placeholder {
+    color: rgba(255, 255, 255, 0.4);
 }
+
+.submit-overlay.mailbox-mode .anon-block,
+.caps-overlay .anon-block,
+.photo-overlay .anon-block,
+.atmo-overlay .anon-block {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.submit-overlay.mailbox-mode .anon-block:focus-within,
+.caps-overlay .anon-block:focus-within,
+.photo-overlay .anon-block:focus-within,
+.atmo-overlay .anon-block:focus-within {
+    border-color: rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.submit-overlay.mailbox-mode .anon-badge,
+.caps-overlay .anon-badge,
+.photo-overlay .anon-badge,
+.atmo-overlay .anon-badge {
+    color: #111111;
+}
+
+.submit-overlay.mailbox-mode .anon-badge .material-symbols-outlined,
+.caps-overlay .anon-badge .material-symbols-outlined,
+.photo-overlay .anon-badge .material-symbols-outlined,
+.atmo-overlay .anon-badge .material-symbols-outlined {
+    color: #111111;
+}
+
+.submit-overlay.mailbox-mode .anon-divider,
+.caps-overlay .anon-divider,
+.photo-overlay .anon-divider,
+.atmo-overlay .anon-divider {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.submit-overlay.mailbox-mode .anon-name-input-field,
+.caps-overlay .anon-name-input-field,
+.photo-overlay .anon-name-input-field,
+.atmo-overlay .anon-name-input-field {
+    color: #111111;
+}
+
+.submit-overlay.mailbox-mode .anon-name-input-field::placeholder,
+.caps-overlay .anon-name-input-field::placeholder,
+.photo-overlay .anon-name-input-field::placeholder,
+.atmo-overlay .anon-name-input-field::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+}
+
 
 .char-counter-wrap {
     font-family: 'Inter', sans-serif;
