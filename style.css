@@ -3396,6 +3396,101 @@ body.submit-open {
     animation: flyToHole 4.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
+/*НОВЕ НОВЕ НОВЕ НОВЕ 2.0*/ 
+/* ===== WYSIWYG КАРТКА (.prmln-card) ===== */
+.prmln-card-wrap {
+    width: 100%;
+    max-width: 380px; /* Оптимально для мобілок */
+    margin: 0 auto;
+    perspective: 1000px;
+}
+
+.prmln-card {
+    width: 100%;
+    aspect-ratio: 4 / 5; /* Пропорція 1080/1350 */
+    background: #FAF8F4;
+    color: #222221;
+    border-radius: 12px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Сам редактор всередині картки */
+.prmln-editor-body {
+    flex-grow: 1;
+    width: 100%;
+    font-size: 22px;
+    line-height: 1.3;
+    outline: none;
+    overflow-y: auto;
+    word-break: break-word;
+    /* Відключаємо скроллбар для краси */
+    scrollbar-width: none; 
+}
+.prmln-editor-body::-webkit-scrollbar { display: none; }
+
+/* Плейсхолдер для contenteditable */
+.prmln-editor-body:empty::before {
+    content: attr(data-placeholder);
+    color: inherit;
+    opacity: 0.4;
+    pointer-events: none;
+    display: block;
+}
+
+/* Тулбар під карткою */
+.prmln-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+    margin: 15px auto;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
+}
+
+.prmln-toolbar-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.color-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s;
+}
+.color-dot.active {
+    transform: scale(1.2);
+    border-color: #fff;
+    box-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+
+/* Липка кнопка Далі */
+.sticky-next-btn {
+    position: sticky !important;
+    bottom: 20px !important;
+    margin-top: auto;
+    width: 100%;
+    max-width: 380px;
+    z-index: 100;
+}
+
 
 
 
