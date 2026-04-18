@@ -571,7 +571,59 @@ document.addEventListener("DOMContentLoaded", () => {
             videoBg.load();
             videoBg.play().catch(e => console.error(e));
 
-            workspace.innerHTML = `<div style="color: white; text-align: center; margin-top: 50px; font-family: '${font}', sans-serif;">Тут буде конструктор картки типу: ${cardType}.<br>Плейсхолдер: ${placeholder}</div>`;
+                        // Генеруємо HTML редактора залежно від типу картки
+            if (cardType === 'basic') {
+                workspace.innerHTML = `
+                    <div class="prmln-card-wrap">
+                        <div class="prmln-card" id="active-prmln-card" style="font-family: '${font}', sans-serif; background: #FAF8F4; color: #222221;">
+                            
+                            <div class="valky-card-header-pill" style="transform: scale(0.85); margin-bottom: 14px; margin-top: -8px; transform-origin: left top;">
+                                <img src="assets/images/anonfacelogo.PNG" alt="Анонім">
+                                <span class="pill-yellow">ВАЛКІВСЬКА</span>
+                                <span class="pill-white">ПРИЙМАЛЬНЯ</span>
+                            </div>
+                            
+                            <div class="prmln-editor-body" id="prmln-editor" contenteditable="true" data-placeholder="${placeholder}"></div>
+                            
+                            <div id="prmln-photo-preview" style="display:none; width: 100%; margin-top: 10px; border-radius: 8px; overflow: hidden;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="prmln-toolbar">
+                        <div class="prmln-toolbar-group">
+                            <span class="material-symbols-outlined" style="color: white; cursor: pointer; font-size: 26px;" id="btn-attach">add_photo_alternate</span>
+                        </div>
+                        <div class="prmln-toolbar-group" id="bg-color-picker">
+                            <div class="color-dot active" data-bg="#FAF8F4" data-color="#222221" style="background: #FAF8F4;"></div>
+                            <div class="color-dot" data-bg="#262624" data-color="#FAF8F4" style="background: #262624;"></div>
+                            <div class="color-dot" data-bg="#B24A3B" data-color="#FAF8F4" style="background: #B24A3B;"></div>
+                        </div>
+                    </div>
+
+                    <button class="submit-action-btn sticky-next-btn" id="btn-next-step">ДАЛІ ➔</button>
+                `;
+
+                // Автоматично ставимо фокус на редактор, щоб можна було зразу писати
+                setTimeout(() => {
+                    document.getElementById('prmln-editor').focus();
+                }, 300);
+                
+                // Логіка перемикання кольорів
+                const colorDots = workspace.querySelectorAll('.color-dot');
+                const card = document.getElementById('active-prmln-card');
+                
+                colorDots.forEach(dot => {
+                    dot.addEventListener('click', () => {
+                        colorDots.forEach(d => d.classList.remove('active'));
+                        dot.classList.add('active');
+                        card.style.background = dot.getAttribute('data-bg');
+                        card.style.color = dot.getAttribute('data-color');
+                    });
+                });
+            } else {
+                workspace.innerHTML = `<div style="color: white;">Конструктор для ${cardType} ще в розробці.</div>`;
+            }
+
         });
     });
 
