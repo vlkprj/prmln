@@ -608,6 +608,84 @@ document.addEventListener("DOMContentLoaded", () => {
                     document.getElementById('prmln-editor').focus();
                 }, 300);
                 
+                const triggers = document.querySelectorAll('.category-trigger');
+    const masterOverlay = document.getElementById('master-editor-overlay');
+    const closeBtn = document.getElementById('close-editor-btn');
+    const dynamicTitle = document.getElementById('editor-dynamic-title');
+    const videoBg = document.getElementById('master-video-bg');
+    const workspace = document.getElementById('editor-workspace');
+
+    let currentMode = '';
+    let currentCardType = '';
+
+    triggers.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const mode = btn.getAttribute('data-mode');
+            const title = btn.getAttribute('data-title');
+            const placeholder = btn.getAttribute('data-placeholder');
+            const font = btn.getAttribute('data-font');
+            const cardType = btn.getAttribute('data-card-type');
+
+            currentMode = mode;
+            currentCardType = cardType;
+
+            dynamicTitle.innerText = title;
+
+            if (mode === 'skrynka') {
+                videoBg.src = 'assets/vids/skrynka.mp4';
+                masterOverlay.className = 'submit-overlay mailbox-mode';
+            } else if (mode === 'blackhole') {
+                videoBg.src = 'assets/vids/BlackHole.mp4';
+                masterOverlay.className = 'submit-overlay hole-mode';
+            }
+
+            masterOverlay.style.display = 'flex';
+            document.body.classList.add('submit-open');
+
+            videoBg.load();
+            videoBg.play().catch(e => console.error(e));
+
+            // Генеруємо HTML редактора залежно від типу картки
+            if (cardType === 'basic') {
+                workspace.innerHTML = `
+                    <div class="prmln-card-wrap">
+                        <div class="prmln-card" id="active-prmln-card" style="font-family: '${font}', sans-serif; background: #FAF8F4; color: #222221;">
+                            
+                            <div style="display: flex; justify-content: center; width: 100%; margin-bottom: 14px;">
+                                <div class="valky-card-header-pill" style="transform: scale(0.85); margin-top: -8px;">
+                                    <img src="assets/images/anonfacelogo.PNG" alt="Анонім">
+                                    <span class="pill-yellow">ВАЛКІВСЬКА</span>
+                                    <span class="pill-white">ПРИЙМАЛЬНЯ</span>
+                                </div>
+                            </div>
+                            
+                            <div class="prmln-editor-body" id="prmln-editor" contenteditable="true" data-placeholder="${placeholder}" style="font-size: 32px; text-align: center; transition: font-size 0.2s;"></div>
+                            
+                            <div id="prmln-photo-preview" style="display:none; width: 100%; margin-top: 10px; border-radius: 8px; overflow: hidden;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="prmln-toolbar" id="prmln-toolbar">
+                        <div class="prmln-toolbar-group">
+                            <span class="material-symbols-outlined" style="color: white; cursor: pointer; font-size: 26px;" id="btn-attach">add_photo_alternate</span>
+                        </div>
+                        <div class="prmln-toolbar-group" id="bg-color-picker">
+                            <div class="color-dot active" data-bg="#FAF8F4" data-color="#222221" style="background: #FAF8F4;"></div>
+                            <div class="color-dot" data-bg="#262624" data-color="#FAF8F4" style="background: #262624;"></div>
+                            <div class="color-dot" data-bg="#B24A3B" data-color="#FAF8F4" style="background: #B24A3B;"></div>
+                        </div>
+                    </div>
+
+                    <button class="submit-action-btn sticky-next-btn" id="btn-next-step" style="opacity: 0.4; pointer-events: none;">ДАЛІ ➔</button>
+                `;
+
+                const editor = document.getElementById('prmln-editor');
+                const btnNext = document.getElementById('btn-next-step');
+                const toolbar = document.getElementById('prmln-toolbar');
+
+                // Автоматично ставимо фокус
+                setTimeout(() => { editor.focus(); }, 300);
+                
                 // Логіка перемикання кольорів
                 const colorDots = workspace.querySelectorAll('.color-dot');
                 const card = document.getElementById('active-prmln-card');
@@ -620,10 +698,87 @@ document.addEventListener("DOMContentLoaded", () => {
                         card.style.color = dot.getAttribute('data-color');
                     });
                 });
-            } else {
-                workspace.innerHTML = `<div style="color: white;">Конструктор для ${cardType} ще в розробці.</div>`;
-            }
 
+                // Динамічний текст + активація кнопки "Далі"
+                editor.addEventListener('input', () => {
+                    const text = editor.innerText.trim();
+                    const len = text.length;
+
+                    if (len > 0) {
+                        btnNext.style.opacity = '1';
+                        btnNext.style.pointerEvents = 'auto';
+                    } else {
+                        btnNext.style.opacity = '0.4';
+                        btnNext.style.pointerEvents = 'none';
+                    }
+
+                    // Стара логіка розповзання тексту
+                    if (len < 80) {
+                        editor.style.fontSize = '32px';
+                        editor.style.textAlign = 'center';
+                    } else if (len < 180) {
+                        editor.style.fontSize = '24px';
+                        editor.style.textAlign = 'center';
+                    } else if (len < 280) {
+                        editor.style.fontSize = '20px';
+                        editor.style.textAlign = 'left';
+                    } else {
+                        editor.style.fontSize = '17px';
+                        editor.style.textAlign = 'left';
+                    }
+                });
+
+                // Логіка переходу на екран публікації
+                btnNext.addEventListener('click', () => {
+                    // Блокуємо редактор, ховаємо зайве
+                    editor.setAttribute('contenteditable', 'false');
+                    toolbar.style.display = 'none';
+                    btnNext.style.display = 'none';
+                    dynamicTitle.innerText = "ПОПЕРЕДНІЙ ПЕРЕГЛЯД";
+
+                    // Малюємо зону нікнейму і кнопки
+                    const publishControls = document.createElement('div');
+                    publishControls.id = 'publish-controls-zone';
+                    publishControls.style.width = '100%';
+                    publishControls.style.maxWidth = '380px';
+                    publishControls.style.margin = '0 auto';
+                    
+                    publishControls.innerHTML = `
+                        <div class="anon-block" style="display: flex; align-items: center; background: rgba(255,255,255,0.1); padding: 10px 15px; border-radius: 12px; backdrop-filter: blur(5px); margin-bottom: 15px;">
+                            <span class="material-symbols-outlined" style="color: white; margin-right: 10px;">domino_mask</span>
+                            <input class="anon-name-input-field anon-name-field" id="prmln-nickname" type="text" placeholder="Нікнейм (Необовʼязково)" style="background: transparent; border: none; color: white; width: 100%; outline: none; font-family: 'Inter', sans-serif; font-size: 16px;">
+                        </div>
+                        
+                        <div class="rules-disclaimer" style="color: rgba(255,255,255,0.6); font-size: 12px; text-align: center; margin-bottom: 20px;">
+                            Щоб потім не було питань, прочитайте <span class="open-rules-btn" style="text-decoration: underline; cursor: pointer;">правила</span>
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px;">
+                            <button class="submit-action-btn" id="btn-back-edit" style="flex: 1; background: rgba(255,255,255,0.2) !important; color: white !important;">← НАЗАД</button>
+                            <button class="submit-action-btn" id="btn-publish" style="flex: 2;">ОПУБЛІКУВАТИ</button>
+                        </div>
+                    `;
+                    
+                    workspace.appendChild(publishControls);
+
+                    // Кнопка НАЗАД
+                    document.getElementById('btn-back-edit').addEventListener('click', () => {
+                        editor.setAttribute('contenteditable', 'true');
+                        toolbar.style.display = 'flex';
+                        btnNext.style.display = 'block';
+                        publishControls.remove();
+                        dynamicTitle.innerText = title;
+                    });
+
+                    // Кнопка ОПУБЛІКУВАТИ
+                    document.getElementById('btn-publish').addEventListener('click', () => {
+                        alert('Картка готова! Далі будемо прикручувати скріншот.');
+                    });
+                });
+
+            } else {
+                workspace.innerHTML = `<div style="color: white; text-align: center; margin-top: 50px;">Конструктор для ${cardType} ще в розробці.</div>`;
+            }
         });
     });
 
@@ -636,3 +791,4 @@ document.addEventListener("DOMContentLoaded", () => {
         workspace.innerHTML = '';
     });
 });
+
