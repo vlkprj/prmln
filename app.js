@@ -557,13 +557,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             dynamicTitle.innerText = title;
 
-            if (mode === 'skrynka') {
-                videoBg.src = 'assets/vids/skrynka.mp4';
-            } else if (mode === 'blackhole') {
-                videoBg.src = 'assets/vids/BlackHole.mp4';
-            }
+                    if (mode === 'skrynka') {
+            videoBg.src = 'assets/vids/skrynka.mp4';
+            masterOverlay.className = 'submit-overlay mailbox-mode';
+        } else if (mode === 'blackhole') {
+            videoBg.src = 'assets/vids/BlackHole.mp4';
+            masterOverlay.className = 'submit-overlay hole-mode';
+        }
 
-            masterOverlay.className = `master-overlay ${mode}-mode`;
             masterOverlay.style.display = 'flex';
             document.body.classList.add('submit-open');
 
