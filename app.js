@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     let bagBtn, bagOverlay, bagClose, bagContent;
 
+    // --- АНІМАЦІЇ І МІКРОІНТЕРАКЦІЇ ---
     const glitchLetter = document.getElementById('glitch-letter');
     if (glitchLetter) {
         setInterval(() => {
@@ -202,6 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(runRumorsCycle, 4000);
     }
 
+    // --- ДВЕРІ І РЮКЗАК ---
     function showAchievementCard(text) {
         const cleanText = text.replace(/\n\n📸[\s\S]*/g, '').replace(/\n\n👀[\s\S]*/g, '');
         const lines = cleanText.split('\n').filter(l => l.trim());
@@ -534,81 +536,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // --- ЛОГІКА ОВЕРЛЕЮ І КАРТКИ ---
     const triggers = document.querySelectorAll('.category-trigger');
-    const masterOverlay = document.getElementById('master-editor-overlay');
-    const closeBtn = document.getElementById('close-editor-btn');
-    const dynamicTitle = document.getElementById('editor-dynamic-title');
-    const videoBg = document.getElementById('master-video-bg');
-    const workspace = document.getElementById('editor-workspace');
-
-    let currentMode = '';
-    let currentCardType = '';
-
-    triggers.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const mode = btn.getAttribute('data-mode');
-            const title = btn.getAttribute('data-title');
-            const placeholder = btn.getAttribute('data-placeholder');
-            const font = btn.getAttribute('data-font');
-            const cardType = btn.getAttribute('data-card-type');
-
-            currentMode = mode;
-            currentCardType = cardType;
-
-            dynamicTitle.innerText = title;
-
-                    if (mode === 'skrynka') {
-            videoBg.src = 'assets/vids/skrynka.mp4';
-            masterOverlay.className = 'submit-overlay mailbox-mode';
-        } else if (mode === 'blackhole') {
-            videoBg.src = 'assets/vids/BlackHole.mp4';
-            masterOverlay.className = 'submit-overlay hole-mode';
-        }
-
-            masterOverlay.style.display = 'flex';
-            document.body.classList.add('submit-open');
-
-            videoBg.load();
-            videoBg.play().catch(e => console.error(e));
-
-                        // Генеруємо HTML редактора залежно від типу картки
-            if (cardType === 'basic') {
-                workspace.innerHTML = `
-                    <div class="prmln-card-wrap">
-                        <div class="prmln-card" id="active-prmln-card" style="font-family: '${font}', sans-serif; background: #FAF8F4; color: #222221;">
-                            
-                            <div class="valky-card-header-pill" style="transform: scale(0.85); margin-bottom: 14px; margin-top: -8px; transform-origin: left top;">
-                                <img src="assets/images/anonfacelogo.PNG" alt="Анонім">
-                                <span class="pill-yellow">ВАЛКІВСЬКА</span>
-                                <span class="pill-white">ПРИЙМАЛЬНЯ</span>
-                            </div>
-                            
-                            <div class="prmln-editor-body" id="prmln-editor" contenteditable="true" data-placeholder="${placeholder}"></div>
-                            
-                            <div id="prmln-photo-preview" style="display:none; width: 100%; margin-top: 10px; border-radius: 8px; overflow: hidden;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="prmln-toolbar">
-                        <div class="prmln-toolbar-group">
-                            <span class="material-symbols-outlined" style="color: white; cursor: pointer; font-size: 26px;" id="btn-attach">add_photo_alternate</span>
-                        </div>
-                        <div class="prmln-toolbar-group" id="bg-color-picker">
-                            <div class="color-dot active" data-bg="#FAF8F4" data-color="#222221" style="background: #FAF8F4;"></div>
-                            <div class="color-dot" data-bg="#262624" data-color="#FAF8F4" style="background: #262624;"></div>
-                            <div class="color-dot" data-bg="#B24A3B" data-color="#FAF8F4" style="background: #B24A3B;"></div>
-                        </div>
-                    </div>
-
-                    <button class="submit-action-btn sticky-next-btn" id="btn-next-step">ДАЛІ ➔</button>
-                `;
-
-                // Автоматично ставимо фокус на редактор, щоб можна було зразу писати
-                setTimeout(() => {
-                    document.getElementById('prmln-editor').focus();
-                }, 300);
-                
-                const triggers = document.querySelectorAll('.category-trigger');
     const masterOverlay = document.getElementById('master-editor-overlay');
     const closeBtn = document.getElementById('close-editor-btn');
     const dynamicTitle = document.getElementById('editor-dynamic-title');
@@ -665,28 +594,26 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                     </div>
                     
-                    <div class="prmln-toolbar" id="prmln-toolbar">
-                        <div class="prmln-toolbar-group">
-                            <span class="material-symbols-outlined" style="color: white; cursor: pointer; font-size: 26px;" id="btn-attach">add_photo_alternate</span>
-                        </div>
-                        <div class="prmln-toolbar-group" id="bg-color-picker">
-                            <div class="color-dot active" data-bg="#FAF8F4" data-color="#222221" style="background: #FAF8F4;"></div>
+                    <div class="prmln-sticky-toolbar" id="prmln-toolbar">
+                        <div style="display: flex; gap: 15px; align-items: center;">
+                            <span class="material-symbols-outlined" style="color: white; cursor: pointer; font-size: 24px;" id="btn-attach">attach_file</span>
+                            <div style="width: 1px; height: 20px; background: rgba(255,255,255,0.2);"></div>
+                            <div class="color-dot active" data-bg="#FAF8F4" data-color="#222221" style="background: #FAF8F4; border: 1px solid #ddd;"></div>
                             <div class="color-dot" data-bg="#262624" data-color="#FAF8F4" style="background: #262624;"></div>
                             <div class="color-dot" data-bg="#B24A3B" data-color="#FAF8F4" style="background: #B24A3B;"></div>
                         </div>
+                        <button class="inline-done-btn" id="btn-next-step" disabled>
+                            Далі <span class="material-symbols-outlined" style="font-size: 18px;">east</span>
+                        </button>
                     </div>
-
-                    <button class="submit-action-btn sticky-next-btn" id="btn-next-step" style="opacity: 0.4; pointer-events: none;">ДАЛІ ➔</button>
                 `;
 
                 const editor = document.getElementById('prmln-editor');
                 const btnNext = document.getElementById('btn-next-step');
                 const toolbar = document.getElementById('prmln-toolbar');
 
-                // Автоматично ставимо фокус
                 setTimeout(() => { editor.focus(); }, 300);
                 
-                // Логіка перемикання кольорів
                 const colorDots = workspace.querySelectorAll('.color-dot');
                 const card = document.getElementById('active-prmln-card');
                 
@@ -699,20 +626,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     });
                 });
 
-                // Динамічний текст + активація кнопки "Далі"
                 editor.addEventListener('input', () => {
                     const text = editor.innerText.trim();
                     const len = text.length;
 
                     if (len > 0) {
-                        btnNext.style.opacity = '1';
-                        btnNext.style.pointerEvents = 'auto';
+                        btnNext.disabled = false;
                     } else {
-                        btnNext.style.opacity = '0.4';
-                        btnNext.style.pointerEvents = 'none';
+                        btnNext.disabled = true;
                     }
 
-                    // Стара логіка розповзання тексту
                     if (len < 80) {
                         editor.style.fontSize = '32px';
                         editor.style.textAlign = 'center';
@@ -728,15 +651,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
 
-                // Логіка переходу на екран публікації
                 btnNext.addEventListener('click', () => {
-                    // Блокуємо редактор, ховаємо зайве
                     editor.setAttribute('contenteditable', 'false');
                     toolbar.style.display = 'none';
-                    btnNext.style.display = 'none';
                     dynamicTitle.innerText = "ПОПЕРЕДНІЙ ПЕРЕГЛЯД";
 
-                    // Малюємо зону нікнейму і кнопки
                     const publishControls = document.createElement('div');
                     publishControls.id = 'publish-controls-zone';
                     publishControls.style.width = '100%';
@@ -761,16 +680,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     
                     workspace.appendChild(publishControls);
 
-                    // Кнопка НАЗАД
                     document.getElementById('btn-back-edit').addEventListener('click', () => {
                         editor.setAttribute('contenteditable', 'true');
                         toolbar.style.display = 'flex';
-                        btnNext.style.display = 'block';
                         publishControls.remove();
                         dynamicTitle.innerText = title;
                     });
 
-                    // Кнопка ОПУБЛІКУВАТИ
                     document.getElementById('btn-publish').addEventListener('click', () => {
                         alert('Картка готова! Далі будемо прикручувати скріншот.');
                     });
@@ -791,4 +707,3 @@ document.addEventListener("DOMContentLoaded", () => {
         workspace.innerHTML = '';
     });
 });
-
