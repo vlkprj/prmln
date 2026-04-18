@@ -3494,6 +3494,7 @@ body.submit-open {
 
 
 
+
 /* АНІМАЦІЇ */
 @keyframes pillowSway { 0% { transform: skewX(-4deg) rotate(-4deg); } 100% { transform: skewX(4deg) rotate(4deg); } }
 @keyframes stepLeft { 0% { transform: translateY(0) scaleY(0.9); } 100% { transform: translateY(-12px) scaleY(1.1); } }
