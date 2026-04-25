@@ -1,763 +1,183 @@
 <!DOCTYPE html>
-
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Валківська Приймальня</title>
+    
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="theme-color" content="#FAFAF5">
 
-```
-<!-- Кеш-контроль -->
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-
-<!-- Шрифти -->
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bad+Script&family=Balsamiq+Sans:wght@400;700&family=Caveat:wght@700&family=Dela+Gothic+One&family=Fira+Sans+Extra+Condensed:wght@400;500;700&family=Inter:wght@400;700;900&family=Oswald:wght@400;500;700&family=PT+Serif:ital,wght@0,400;0,700;1,700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Rubik+Doodle+Shadow&family=Space+Grotesk:wght@500;700;900&family=Vollkorn:ital,wght@0,400;0,500;0,900;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-
-<!-- Стилі -->
-<link rel="stylesheet" href="style.css">
-
-<!-- Preload відео -->
-<link rel="preload" href="skrynka.mp4" as="video" type="video/mp4">
-<link rel="preload" href="blackhole.mp4" as="video" type="video/mp4">
-```
-
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bad+Script&family=Balsamiq+Sans:wght@400;700&family=Caveat:wght@700&family=Dela+Gothic+One&family=Fira+Sans+Extra+Condensed:wght@400;500;700&family=Inter:wght@400;700;900&family=Oswald:wght@400;500;700&family=PT+Serif:ital,wght@0,400;0,700;1,700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Rubik+Doodle+Shadow&family=Space+Grotesk:wght@500;700;900&family=Vollkorn:ital,wght@0,400;0,500;0,900;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preload" href="assets/vids/skrynka.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="assets/vids/BlackHole.mp4" as="video" type="video/mp4">
 </head>
 <body>
-
-<!-- ================================================
-     ХЕДЕР
-     ================================================ -->
-
+    
 <div class="top-header">
-
-```
-<!-- Герб -->
-<img src="assets/images/gerb.png" alt="Герб" class="top-left-crest">
-
-<!-- Логотип + назва -->
-<div class="header-main-title">
-    <div class="anon-logo-wrap">
-        <img src="assets/images/anonfacelogo.PNG" alt="Анонім Лого">
+    <img src="assets/images/gerb.png" alt="Герб" class="top-left-crest">
+    
+    <div class="header-main-title">
+        <div class="anon-logo-wrap">
+            <img src="assets/images/anonfacelogo.PNG" alt="Анонім Лого">
+        </div>
+        <div class="header-text-group">
+            <span class="vollkorn-valk">ВАЛКІВСЬКА</span>
+            <span class="vollkorn-pryim">ПРИЙМАЛЬНЯ</span>
+        </div>
     </div>
-    <div class="header-text-group">
-        <span class="vollkorn-valk">ВАЛКІВСЬКА</span>
-        <span class="vollkorn-pryim">ПРИЙМАЛЬНЯ</span>
-    </div>
+    
+    <a href="https://t.me/valkychat" target="_blank" class="hyperlink-cutout link-left">
+        <span class="btn-small-text">глянути</span>
+        <span class="btn-big-text">ЧАТІК</span>
+    </a>
+    <a href="https://t.me/valkybazar" target="_blank" class="hyperlink-cutout link-right">
+        <span class="btn-small-text">глянути</span>
+        <span class="btn-big-text">БАЗАРЧИК</span>
+    </a>
+    
+    <div class="secret-door-btn" id="secret-door">🚪</div>
 </div>
 
-<!-- Лінк: Чатік -->
-<a href="https://t.me/valkychat" target="_blank" class="hyperlink-cutout link-left">
-    <span class="btn-small-text">глянути</span>
-    <span class="btn-big-text">ЧАТІК</span>
-</a>
-
-<!-- Лінк: Базарчик -->
-<a href="https://t.me/valkybazar" target="_blank" class="hyperlink-cutout link-right">
-    <span class="btn-small-text">глянути</span>
-    <span class="btn-big-text">БАЗАРЧИК</span>
-</a>
-
-<!-- Токсік-двері (тапалка з ефектами) -->
-<div class="secret-door-btn" id="secret-door">🚪</div>
-```
-
-</div>
-<!-- ХЕДЕР КІНЕЦЬ -->
-
-<!-- Дисклеймер про анонімність -->
-
-<div class="anon-text" style="margin-top: 45px; margin-bottom: 10px;">
+<div class="anon-text">
     Всі ваші повідомлення абсолютно анонімні (навіть ми не знаємо хто ви)! Якщо хочете, щоб під публікацією було ваше імʼя — введіть його у спеціальне поле.
 </div>
 
 <hr class="neutral-divider">
 
-<!-- Підзаголовок -->
-
 <div class="tiktok-subtitle">
     <span>Що хочете опублікувати?<br>Натисніть на будь-яку кнопку нижче 👇🏻</span>
 </div>
 
-<!-- ================================================
-     ГОЛОВНИЙ ФІД — КНОПКИ
-     data-card-type: "basic" | "atmosphere" | "photo" | "meme"
-     data-video:     "mailbox" | "hole"
-     ================================================ -->
+<div class="main-feed" id="main-feed">
 
-<div class="main-feed">
+    <div class="btn category-trigger b-write-main" data-mode="skrynka" data-title="НАПИСАТИ" data-card-type="basic">
+        <span class="material-symbols-outlined write-icon">edit_square</span>
+        <span class="write-text">Написати</span>
+    </div>
 
-```
-<!-- Написати (головна, mailbox) -->
-<div class="btn b-write-main" data-card-type="basic" data-video="mailbox">
-    <span class="material-symbols-outlined write-icon">edit_square</span>
-    <span class="write-text">Написати</span>
-</div>
-
-
-<!-- Рядок: Розказати + Серйозне -->
-<div class="row-container" style="align-items: stretch;">
-
-    <!-- Розказати (mailbox) -->
-    <div class="btn b-story" data-card-type="basic" data-video="mailbox">
-        <div class="story-top-label">РОЗКАЗАТИ</div>
-        <div class="story-typing-area">
-            <span id="story-text"></span><span class="cursor">|</span>
+    <div class="row-container">
+        <div class="btn category-trigger b-story" data-mode="skrynka" data-title="РОЗКАЗАТИ" data-card-type="basic">
+            РОЗКАЗАТИ
         </div>
-        <div class="story-submit">Почати</div>
-    </div>
-
-    <!-- Написати щось серйозне (mailbox) -->
-    <div class="btn b-serious" data-card-type="basic" data-video="mailbox">
-        <div class="serious-text-wrapper">
-            <span class="normal-text">НАПИСАТИ</span>
-            <span class="normal-text">ЩОСЬ</span>
-            <span class="word-serious">СЕРЙОЗН<span id="glitch-letter">Е</span></span>
-        </div>
-        <span class="material-symbols-outlined serious-plus">add</span>
-    </div>
-
-</div>
-<!-- рядок кінець -->
-
-
-<!-- Показати атмосферу (atmosphere-card, mailbox) -->
-<div class="btn b-atmosphere" data-card-type="atmosphere" data-video="mailbox">
-    <div class="polaroid-pic">
-        <span class="material-symbols-outlined plus-icon">add</span>
-    </div>
-    <div class="polaroid-text">Показати атмосферу у Валках</div>
-</div>
-
-
-<!-- Потрібна порада (mailbox) -->
-<div class="btn b-advice" data-card-type="basic" data-video="mailbox">
-    <span class="material-symbols-outlined advice-icon">psychology_alt</span>
-    Потрібна порада
-</div>
-
-
-<!-- Шановна міськрада (mailbox) -->
-<div class="btn b-petition" data-card-type="basic" data-video="mailbox">
-    <span class="material-symbols-outlined" style="font-size: 28px;">campaign</span>
-    <div class="pet-text">
-        <span class="pet-title">Шановна міськрада, </span>
-        <span class="pet-sub">✍️ 0 підписів <span style="font-style:italic; color:#999; font-weight:400;">(хехе)</span></span>
-    </div>
-    <span class="material-symbols-outlined" style="color:#ddd; margin-left:auto; flex-shrink:0;">chevron_right</span>
-</div>
-
-
-<!-- Чутки (hole) — анімований персонаж -->
-<div class="rumors-container" id="rumors-btn-wrap" data-card-type="basic" data-video="hole">
-    <div class="orbit-ear" id="orbit-ear">👂</div>
-    <div class="rumor-arm arm-left">🫳🏻</div>
-    <div class="rumor-arm arm-right">🫳🏻</div>
-    <div class="b-rumors-pillow" id="rumors-body">
-        <div class="rumors-header" id="rumors-title">ЧУТКИ</div>
-        <div id="rumors-dynamic-text">А ви чули...</div>
-    </div>
-    <div class="sneaker-legs" id="rumors-legs">
-        <div class="sneaker left">👟</div>
-        <div class="sneaker right">👟</div>
-    </div>
-</div>
-
-
-<!-- Відправити фото (photo-card, mailbox) -->
-<div class="btn b-photo" data-card-type="photo" data-video="mailbox">
-    <span class="material-symbols-outlined">photo_library</span>
-    ВІДПРАВИТИ ФОТО
-</div>
-
-
-<!-- Подякувати (mailbox) -->
-<div class="btn b-thank" data-card-type="basic" data-video="mailbox">
-    <svg class="heart-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 21C12 21 3 14.5 3 8.5C3 5.46 5.46 3 8.5 3C10.24 3 11.82 3.8 12.87 5.07C13.18 4.7 13.55 4.38 13.97 4.12C14.88 3.4 16.01 3 17.15 3C19.86 3 22 5.14 22 7.85C22 14.5 12 21 12 21Z" fill="#B24A3B" stroke="#B24A3B" stroke-width="1.5" stroke-linejoin="round"/>
-    </svg>
-    подякувати
-</div>
-
-
-<!-- Поскаржитись (mailbox) — з вулітаючим підписом -->
-<div class="complain-wrapper">
-    <div class="complain-pop-text" id="complain-pop">на вонючу рибу</div>
-    <div class="btn b-complain" data-card-type="basic" data-video="mailbox">
-        <span class="material-symbols-outlined" style="font-size: 28px;">sentiment_dissatisfied</span>
-        <span style="font-family:'Space Grotesk',sans-serif; font-weight:900; font-size:16px; text-transform:uppercase;">Поскаржитись</span>
-        <span class="material-symbols-outlined" style="margin-left:auto;">arrow_forward</span>
-    </div>
-</div>
-
-
-<!-- Отака проблема (hole) -->
-<div class="btn b-problem" data-card-type="basic" data-video="hole">
-    <div class="map-header">
-        <span class="material-symbols-outlined icon-pin">location_on</span>
-        <span style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; color: #000;">Обрати місце</span>
-        <span class="material-symbols-outlined" style="color:#ccc; margin-left:auto; font-size:18px;">chevron_right</span>
-    </div>
-    <div class="map-content">
-        <div class="map-title">ОТАКА ПРОБЛЕМА</div>
-        <div class="map-desc">[коли у Валках шось пішло не так]</div>
-    </div>
-</div>
-
-
-<!-- Непопулярна думка (hole) -->
-<div class="btn b-unpopular" data-card-type="basic" data-video="hole" style="padding: 15px; width: 90%; box-sizing: border-box;">
-    <div class="fake-post-input">
-        <span style="color: #888;">Напишіть свою <b style="color:#666;">непопулярну</b> думку...</span>
-        <span class="material-symbols-outlined" style="color:#aaa; font-size:18px;">edit_square</span>
-    </div>
-    <div class="reactions" style="margin-top: 12px; justify-content: flex-start;">
-        <div class="react">👎 27</div>
-        <div class="react">🤡 13</div>
-        <div class="react">👍 12</div>
-        <div class="react">🤬 6</div>
-    </div>
-</div>
-
-
-<!-- Промовчати (НЕ flow — окремий оверлей) -->
-<div class="btn b-silence" id="btn-silence">
-    <span class="material-symbols-outlined" id="icon-silence">volume_up</span>
-    <span>ПРОМОВЧАТИ</span>
-</div>
-
-
-<!-- Рядок: Привітати + Мем -->
-<div class="row-container">
-
-    <!-- Привітати з ДН (mailbox) -->
-    <div class="btn b-birthday" data-card-type="basic" data-video="mailbox">
-        <div class="bd-emoji e1">🎈</div>
-        <div class="bd-emoji e2">🎁</div>
-        <div class="bd-emoji e3">🎂</div>
-        <span class="bd-top">привітати</span>
-        <span class="bd-middle">з днем</span>
-        <span class="bd-bottom">народження</span>
-    </div>
-
-    <!-- Відправити мем (meme-card = photo у hole-режимі) -->
-    <div class="btn b-meme" data-card-type="meme" data-video="hole">Відправити<br>мем</div>
-
-</div>
-<!-- рядок кінець -->
-
-
-<!-- Рядок: Збір + Є ідея -->
-<div class="row-container">
-
-    <!-- Опублікувати збір (mailbox) -->
-    <div class="btn b-zbir" data-card-type="basic" data-video="mailbox">
-        <span class="zbir-small">опублікувати</span>
-        <span class="zbir-big">ЗБІР</span>
-        <div class="zbir-icon-row">
-            <span>🫙</span>
-            <span class="material-symbols-outlined" style="font-size: 18px; font-weight: 900;">add</span>
+        <div class="btn category-trigger b-serious" data-mode="skrynka" data-title="СЕРЙОЗНЕ" data-card-type="basic">
+            СЕРЙОЗНЕ
         </div>
     </div>
 
-    <!-- Є ідея (mailbox) -->
-    <div class="btn b-idea" data-card-type="basic" data-video="mailbox">
-        <span class="material-symbols-outlined idea-icon-small">add</span>
-        <div class="idea-title-small">Є ІДЕЯ</div>
-        <div id="idea-hint-text" style="font-family:'Inter',sans-serif; font-size:10px; color:#bbb; font-weight:500; min-height:14px;"></div>
+    <div class="btn category-trigger b-atmosphere" data-mode="skrynka" data-title="ПОКАЗАТИ АТМОСФЕРУ У ВАЛКАХ" data-card-type="atmosphere">
+        ПОКАЗАТИ АТМОСФЕРУ У ВАЛКАХ
     </div>
 
-</div>
-<!-- рядок кінець -->
-
-
-<!-- Написати шопопало (hole) -->
-<div class="btn b-shopopalo" data-card-type="basic" data-video="hole">
-    <div class="avatar"><span class="material-symbols-outlined" style="font-size: 20px;">person</span></div>
-    <div class="input-text">Написати шопопало...</div>
-</div>
-
-
-<!-- Написати адмінам (hole) -->
-<div class="btn b-admins" data-card-type="basic" data-video="hole">
-    НАПИСАТИ АДМІНАМ<br>
-    <span class="admin-subtext">(ця некрасіва кнопка тут для прілічія)</span>
-</div>
-
-
-<!-- Футер -->
-<div class="footer-copy">ВШТ • 2026. Всі права незахищені.</div>
-```
-
-</div>
-<!-- КНОПКИ КІНЕЦЬ -->
-
-<!-- Фіксована кнопка "ІНШЕ?" (hole) -->
-
-<div class="side-tag" data-card-type="basic" data-video="hole">ІНШЕ?</div>
-
-<!-- FAB-кнопка прокрутки -->
-
-<div id="scroll-fab">
-    <span class="material-symbols-outlined" id="fab-icon">arrow_downward</span>
-</div>
-
-<!-- ================================================
-     ЄДИНИЙ FLOW-ОВЕРЛЕЙ
-     Замінює 4 старих оверлеї одним роутером.
-     JS керує через:
-       #prmln-flow.data-screen  = "editor" | "preview" | "sent"
-       #prmln-flow.data-card-type = "basic" | "atmosphere" | "photo" | "meme"
-       #prmln-flow.data-video   = "mailbox" | "hole"
-     ================================================ -->
-
-<div id="prmln-flow" class="prmln-flow"
-     data-screen="editor"
-     data-card-type="basic"
-     data-video="mailbox">
-
-```
-<!-- Відео-фон (src підставляється JS-ом залежно від data-video) -->
-<video id="flow-video" class="flow-video-bg" playsinline muted preload="auto"></video>
-
-
-<!-- ===========================
-     ЕКРАН 1 — РЕДАКТОР
-     =========================== -->
-<div class="flow-screen" id="flow-screen-editor">
-
-    <!-- Хедер редактора -->
-    <div class="flow-header">
-        <span class="flow-title" id="flow-title">НАПИСАТИ</span>
-        <button class="flow-close-btn" id="flow-close" aria-label="Закрити">
-            <span class="material-symbols-outlined">close</span>
-        </button>
+    <div class="btn category-trigger b-advice" data-mode="skrynka" data-title="ПОТРІБНА ПОРАДА" data-card-type="basic">
+        ПОТРІБНА ПОРАДА
     </div>
 
+    <div class="btn category-trigger b-petition" data-mode="skrynka" data-title="ШАНОВНА МІСЬКРАДА" data-card-type="basic">
+        ШАНОВНА МІСЬКРАДА
+    </div>
 
-    <!-- ---------------------------
-         ПАНЕЛЬ: basic-card
-         Для всіх кнопок крім атмосфери і фото/меп
-         --------------------------- -->
-    <div class="editor-panel" id="panel-basic">
+    <div class="btn category-trigger b-photo" data-mode="skrynka" data-title="ВІДПРАВИТИ ФОТО" data-card-type="photo">
+        ВІДПРАВИТИ ФОТО
+    </div>
+    
+    <div class="btn category-trigger b-thank" data-mode="skrynka" data-title="ПОДЯКУВАТИ" data-card-type="basic">
+        ПОДЯКУВАТИ
+    </div>
 
-        <!-- Підказка (тост зверху) -->
-        <div class="flow-hint" id="flow-hint"></div>
+    <div class="btn category-trigger b-complain" data-mode="skrynka" data-title="ПОСКАРЖИТИСЬ" data-card-type="basic">
+        ПОСКАРЖИТИСЬ
+    </div>
 
-        <!-- Лічильник карток (з'являється якщо текст > 350 символів) -->
-        <div class="card-count-hint" id="card-count-hint"></div>
+    <div class="btn category-trigger b-pour-soul" data-mode="blackhole" data-title="ВИЛИТИ ДУШУ" data-card-type="basic">
+        ВИЛИТИ ДУШУ
+    </div>
 
-        <!-- Блок редактора: contenteditable + тулбар -->
-        <div class="submit-editor-wrap">
+    <div class="btn category-trigger b-problem" data-mode="blackhole" data-title="ОТАКА ПРОБЛЕМА" data-card-type="basic">
+        ОТАКА ПРОБЛЕМА
+    </div>
 
-            <!-- Поле вводу (WYSIWYG) -->
-            <div class="submit-editor"
-                 id="submit-editor"
-                 contenteditable="true"
-                 data-placeholder="Пишіть сюди..."></div>
+    <div class="btn category-trigger b-unpopular" data-mode="blackhole" data-title="НЕПОПУЛЯРНА ДУМКА" data-card-type="basic">
+        НЕПОПУЛЯРНА ДУМКА
+    </div>
 
-            <!-- Превью прикріпленого фото (з'являється після attach) -->
-            <div id="attach-preview-inline" class="attach-preview-inline"></div>
+    <div class="btn category-trigger b-rumors" data-mode="blackhole" data-title="ЧУТКИ" data-card-type="basic">
+        ЧУТКИ
+    </div>
 
-            <!-- Тулбар: лічильник + attach + Bold/Italic + шрифт -->
-            <div class="editor-toolbar-row">
+    <div class="row-container">
+        <div class="btn category-trigger b-birthday" data-mode="skrynka" data-title="ПРИВІТАТИ" data-card-type="basic">
+            ПРИВІТАТИ
+        </div>
+        <div class="btn category-trigger b-meme" data-mode="blackhole" data-title="ВІДПРАВИТИ МЕМ" data-card-type="meme">
+            ВІДПРАВИТИ МЕМ
+        </div>
+    </div>
 
-                <div class="char-counter-wrap" id="char-counter-wrap">
-                    <span id="char-counter">0</span>/350
-                </div>
+    <div class="row-container">
+        <div class="btn category-trigger b-zbir" data-mode="skrynka" data-title="ЗБІР" data-card-type="basic">
+            ЗБІР
+        </div>
+        <div class="btn category-trigger b-idea" data-mode="skrynka" data-title="Є ІДЕЯ" data-card-type="basic">
+            Є ІДЕЯ
+        </div>
+    </div>
 
-                <!-- Прикріпити фото -->
-                <button class="toolbar-attach-btn" id="attach-btn" aria-label="Прикріпити фото">
-                    <span class="material-symbols-outlined" style="font-size:20px;">attach_file</span>
-                </button>
-                <input type="file" id="attach-input" accept="image/*" style="display:none;">
+    <div class="btn category-trigger b-shopopalo" data-mode="blackhole" data-title="ШОПОПАЛО" data-card-type="basic">
+        ШОПОПАЛО
+    </div>
 
-                <!-- Bold / Italic / шрифт -->
-                <div class="toolbar-right-group" style="display:flex; align-items:center; gap:4px; margin-left:auto;">
-                    <button class="toolbar-btn" data-cmd="bold"><b>B</b></button>
-                    <button class="toolbar-btn" data-cmd="italic"><i style="font-family:serif;">i</i></button>
-                    <div class="toolbar-divider"></div>
-                    <div class="toolbar-font-box" id="toolbar-font-box">
-                        <span class="toolbar-font-label">Шрифт</span>
-                        <select class="toolbar-select" id="font-select">
-                            <option value="Inter">Inter</option>
-                            <option value="Vollkorn">Vollkorn</option>
-                            <option value="PT Serif">PT Serif</option>
-                            <option value="Space Grotesk">Grotesk</option>
-                            <option value="Oswald">Oswald</option>
-                            <option value="Philosopher">Philosopher</option>
-                            <option value="Dela Gothic One">Dela Gothic</option>
-                            <option value="Bad Script">Bad Script</option>
-                            <option value="Balsamiq Sans">Balsamiq</option>
-                            <option value="Fira Sans Extra Condensed">Fira Sans</option>
-                        </select>
-                    </div>
-                </div>
+    <div class="btn category-trigger b-admins" data-mode="blackhole" data-title="НАПИСАТИ АДМІНАМ" data-card-type="basic">
+        НАПИСАТИ АДМІНАМ
+    </div>
 
+    <div class="btn category-trigger b-other" data-mode="blackhole" data-title="ІНШЕ" data-card-type="basic">
+        ІНШЕ
+    </div>
+    
+    <div class="footer-copy">ВШТ • 2026. Всі права незахищені.</div>
+</div>
+
+<div class="bag-btn" id="bag-btn" style="display: none;">🎒</div>
+<div class="bag-overlay" id="bag-overlay" style="display: none;">
+    </div>
+
+<div id="builder-overlay" class="fullscreen-overlay" style="display: none;">
+    <div class="overlay-header">
+        <button id="builder-back" class="icon-btn"><span class="material-symbols-outlined">arrow_back</span></button>
+        <span class="overlay-title" id="builder-title">Конструктор</span>
+        <div style="width: 24px;"></div>
+    </div>
+    <div class="builder-workspace" id="builder-workspace">
+        <div class="prmln-card" id="active-card">
             </div>
-            <!-- editor-toolbar-row кінець -->
-
-            <!-- Тулбар: кольори + кнопка Готово -->
-            <div class="editor-colors-row" style="position:relative; display:flex; align-items:center; justify-content:space-between; padding-top:8px; z-index:100;">
-
-                <div style="display:flex; gap:15px; align-items:center;">
-
-                    <!-- Колір тексту -->
-                    <div class="color-picker-wrap">
-                        <span class="colors-label">Текст</span>
-                        <div class="main-color-btn" id="main-text-color" style="background:#222221;"></div>
-                        <div class="color-popover" id="popover-text">
-                            <div class="color-dot text-color-dot" data-color="#222221" style="background:#222221;"></div>
-                            <div class="color-dot text-color-dot" data-color="#B24A3B" style="background:#B24A3B;"></div>
-                            <div class="color-dot text-color-dot" data-color="#4282AA" style="background:#4282AA;"></div>
-                            <div class="color-dot text-color-dot" data-color="#D97757" style="background:#D97757;"></div>
-                        </div>
-                    </div>
-
-                    <div class="toolbar-divider"></div>
-
-                    <!-- Колір фону -->
-                    <div class="color-picker-wrap">
-                        <span class="colors-label">Фон</span>
-                        <div class="main-color-btn" id="main-bg-color" style="background:#FAF8F4; border:1px solid #ddd;"></div>
-                        <div class="color-popover" id="popover-bg">
-                            <div class="color-dot bg-color-dot" data-color="#FAF8F4" style="background:#FAF8F4; border:1px solid #ddd;"></div>
-                            <div class="color-dot bg-color-dot" data-color="#262624" style="background:#262624;"></div>
-                            <div class="color-dot bg-color-dot" data-color="#FFFFFF" style="background:#FFFFFF; border:1px solid #ddd;"></div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Кнопка Готово (з'являється при фокусі, sticky при клавіатурі) -->
-                <button class="inline-done-btn" id="inline-done-btn" disabled>
-                    Готово <span class="material-symbols-outlined" style="font-size:18px;">east</span>
-                </button>
-
-            </div>
-            <!-- editor-colors-row кінець -->
-
-        </div>
-        <!-- submit-editor-wrap кінець -->
-
-        <!-- Блок анонімності -->
-        <div class="anon-block">
-            <div class="anon-badge">
-                <span class="material-symbols-outlined">domino_mask</span>
-                Анонімно
-            </div>
-            <div class="anon-divider"></div>
-            <input class="anon-name-input-field" id="basic-anon-input"
-                   type="text" placeholder="Нікнейм (Необовʼязково)">
-        </div>
-
-        <!-- Правила -->
-        <div class="rules-disclaimer">
-            Щоб потім не було питань, прочитайте <span class="open-rules-btn">правила</span>
-        </div>
-
-        <!-- Кнопка Далі (sticky — завжди видима над клавіатурою) -->
-        <button class="flow-next-btn" id="basic-next-btn">
-            ДАЛІ <span class="material-symbols-outlined" style="font-size:18px; vertical-align:middle;">arrow_forward</span>
-        </button>
-
     </div>
-    <!-- panel-basic кінець -->
-
-
-    <!-- ---------------------------
-         ПАНЕЛЬ: atmosphere-card
-         Тільки для кнопки "Показати атмосферу у Валках"
-         --------------------------- -->
-    <div class="editor-panel" id="panel-atmosphere" style="display:none;">
-
-        <div class="caps-label">ПОКАЗАТИ АТМОСФЕРУ</div>
-
-        <!-- Вибір лейауту поляроїдів -->
-        <div class="atmo-layout-row">
-            <button class="atmo-layout-btn active" data-layout="single-polaroid">
-                <span class="material-symbols-outlined" style="font-size:22px;">image</span>
-                <span>PLRD</span>
-            </button>
-            <button class="atmo-layout-btn" data-layout="two-polaroid">
-                <span class="material-symbols-outlined" style="font-size:22px;">photo_library</span>
-                <span>×2</span>
-            </button>
-            <button class="atmo-layout-btn" data-layout="single-square">
-                <span class="material-symbols-outlined" style="font-size:22px;">crop_square</span>
-                <span>Квадрат</span>
-            </button>
-            <button class="atmo-layout-btn" data-layout="grid-four">
-                <span class="material-symbols-outlined" style="font-size:22px;">grid_view</span>
-                <span>Сітка</span>
-            </button>
-        </div>
-
-        <!-- Сцена: сюди JS рендерить слоти для фото -->
-        <div class="atmo-stage" id="atmo-stage"></div>
-
-        <!-- Вибір кольору фону -->
-        <div class="editor-colors-row" id="atmo-colors-bar">
-            <span class="colors-label">Фон</span>
-            <div class="color-dot atmo-bg-dot active" data-color="#FAF8F4" style="background:#FAF8F4; border:1px solid #ddd;"></div>
-            <div class="color-dot atmo-bg-dot" data-color="#262624" style="background:#262624;"></div>
-            <div class="color-dot atmo-bg-dot" data-color="#B24A3B" style="background:#B24A3B;"></div>
-            <div class="color-dot atmo-bg-dot" data-color="#4282AA" style="background:#4282AA;"></div>
-            <div class="color-dot atmo-bg-dot" data-color="#D97757" style="background:#D97757;"></div>
-        </div>
-
-        <!-- Блок анонімності -->
-        <div class="anon-block">
-            <div class="anon-badge">
-                <span class="material-symbols-outlined">domino_mask</span>
-                Анонімно
-            </div>
-            <div class="anon-divider"></div>
-            <input class="anon-name-input-field" id="atmo-anon-input"
-                   type="text" placeholder="Нікнейм (Необовʼязково)">
-        </div>
-
-        <!-- Правила -->
-        <div class="rules-disclaimer">
-            Щоб потім не було питань, прочитайте <span class="open-rules-btn">правила</span>
-        </div>
-
-        <!-- Кнопка Далі (sticky) -->
-        <button class="flow-next-btn" id="atmo-next-btn">
-            ДАЛІ <span class="material-symbols-outlined" style="font-size:18px; vertical-align:middle;">arrow_forward</span>
-        </button>
-
-    </div>
-    <!-- panel-atmosphere кінець -->
-
-
-    <!-- ---------------------------
-         ПАНЕЛЬ: photo / meme-card
-         photo: data-video="mailbox", meme: data-video="hole"
-         Заголовок і стиль змінюються JS-ом
-         --------------------------- -->
-    <div class="editor-panel" id="panel-photo" style="display:none;">
-
-        <!-- Заголовок (JS підставляє "ВІДПРАВИТИ ФОТО" або "ВІДПРАВИТИ МЕМ") -->
-        <div class="caps-label" id="photo-panel-title">ВІДПРАВИТИ ФОТО</div>
-
-        <!-- Зона drag-and-drop / tap для завантаження фото -->
-        <div class="photo-drop-zone" id="photo-drop-zone">
-            <input type="file" id="photo-file-input" accept="image/*" style="display:none;">
-            <div class="photo-drop-inner" id="photo-drop-inner">
-                <span class="material-symbols-outlined photo-plus-icon">add</span>
-                <span class="photo-drop-hint" id="photo-drop-hint">Натисніть +, щоб додати зображення</span>
-            </div>
-            <!-- Превью вибраного фото -->
-            <img id="photo-preview-img" class="photo-preview-img" style="display:none;">
-        </div>
-
-        <!-- Поле підпису (з'являється після вибору фото) -->
-        <div id="photo-caption-wrap" style="display:none; width:100%; max-width:400px;">
-            <input class="submit-name-input" id="photo-caption"
-                   type="text"
-                   placeholder="Підпис до фото (необовʼязково)"
-                   style="width:100%; padding:10px 14px; border-radius:10px; font-size:14px; box-sizing:border-box; border:1px solid #ddd; font-family:'Inter',sans-serif;">
-        </div>
-
-        <!-- Блок анонімності -->
-        <div class="anon-block">
-            <div class="anon-badge">
-                <span class="material-symbols-outlined">domino_mask</span>
-                Анонімно
-            </div>
-            <div class="anon-divider"></div>
-            <input class="anon-name-input-field" id="photo-anon-input"
-                   type="text" placeholder="Нікнейм (Необовʼязково)">
-        </div>
-
-        <!-- Правила -->
-        <div class="rules-disclaimer">
-            Щоб потім не було питань, прочитайте <span class="open-rules-btn">правила</span>
-        </div>
-
-        <!-- Кнопка Далі (sticky) -->
-        <button class="flow-next-btn" id="photo-next-btn">
-            ДАЛІ <span class="material-symbols-outlined" style="font-size:18px; vertical-align:middle;">arrow_forward</span>
-        </button>
-
-    </div>
-    <!-- panel-photo кінець -->
-
+    <button id="builder-next-btn" class="sticky-bottom-btn">Далі</button>
 </div>
-<!-- flow-screen-editor кінець -->
 
-
-<!-- ===========================
-     ЕКРАН 2 — ПРЕВЬЮ
-     =========================== -->
-<div class="flow-screen" id="flow-screen-preview" style="display:none;">
-
-    <div class="preview-header">
-        <span class="preview-label">ПОПЕРЕДНІЙ ПЕРЕГЛЯД</span>
-        <!-- Назад до редактора -->
-        <button class="preview-edit-btn" id="flow-back-btn">← Редагувати</button>
+<div id="preview-overlay" class="fullscreen-overlay" style="display: none;">
+    <div class="overlay-header">
+        <button id="preview-back" class="icon-btn"><span class="material-symbols-outlined">arrow_back</span></button>
+        <span class="overlay-title">Перевірка</span>
+        <div style="width: 24px;"></div>
     </div>
-
-    <!-- Сюди JS рендерить prmln-card картки -->
-    <div class="preview-post-card" id="preview-cards"></div>
-
-    <!-- Хінт "Гортай" якщо карток > 1 -->
-    <div class="preview-swipe-hint" id="preview-swipe-hint"></div>
-
-    <!-- Відправити -->
-    <button class="submit-action-btn" id="flow-send-btn">ВІДПРАВИТИ</button>
-
-</div>
-<!-- flow-screen-preview кінець -->
-
-
-<!-- ===========================
-     ЕКРАН 3 — ВІДПРАВЛЕНО
-     =========================== -->
-<div class="flow-screen" id="flow-screen-sent" style="display:none;">
-
-    <div class="sent-text">✅ ВІДПРАВЛЕНО У ВАЛКІВСЬКУ ПРИЙМАЛЬНЮ</div>
-    <div class="sent-sub">
-        Очікуйте вашу публікацію на
-        <a href="https://t.me/valkyoperatyvno" target="_blank" class="sent-link">каналі</a>
-    </div>
-    <button class="close-sent-btn" id="flow-close-sent">Закрити</button>
-
-</div>
-<!-- flow-screen-sent кінець -->
-```
-
-</div>
-<!-- ЄДИНИЙ FLOW-ОВЕРЛЕЙ КІНЕЦЬ -->
-
-<!-- ================================================
-     ПРОМОВЧАТИ (окремий оверлей, НЕ частина flow)
-     ================================================ -->
-
-<div class="silence-overlay" id="silence-overlay">
-    <span class="material-symbols-outlined close-silence" id="close-silence">close</span>
-    <div class="silence-timer" id="silence-timer" style="display:none;">30</div>
-    <div class="silence-msg" id="silence-main-msg">ну мовчіть...</div>
-    <div class="breathe-container" id="breathe-container">
-        <div class="breathe-circle"></div>
-        <div class="breathe-content">
-            <div class="breathe-msg" id="breathe-msg">Вдих</div>
-            <div id="nose-icon" class="nose-emoji nose-inhale">👃🏻</div>
+    <div class="preview-workspace" id="preview-workspace">
         </div>
+    <button id="publish-btn" class="sticky-bottom-btn publish-color">Опублікувати</button>
+</div>
+
+<div id="success-overlay" class="fullscreen-overlay" style="display: none;">
+    <video id="success-video" playsinline muted preload="auto"></video>
+    <div id="success-text" class="smooth-fade-text">
+        Відправлено до Валківської Приймальні.<br>Очікуйте вашу публікацію на каналі.
     </div>
 </div>
 
-<!-- ================================================
-     ПРАВИЛА (модалка)
-     ================================================ -->
-
-<div class="rules-modal-overlay" id="rules-modal">
-    <div class="rules-modal-box">
-        <div class="rules-modal-title">ПРАВИЛА</div>
-
-```
-    <div class="rules-modal-content">
-
-        <p style="font-size:15px; color:#555; line-height:1.5; margin-bottom:25px;">
-            Вітаємо у Валківській Приймальні. Ця штука створена для того, щоб вилити душу, попліткувати і розширювати валківську локальну інтернет-культуру. <b>Ви пишете анонімно — ми публікуємо.</b> Але щоб ця Приймальня працювала, а до адмінів не приїхали серйозні дядьки з питаннями, граємо за такими правилами:
-        </p>
-
-        <h3 style="display:flex; align-items:center; gap:8px; color:#2c2c2c; margin-top:30px;">
-            <span class="material-symbols-outlined" style="color:#4CAF50;">check_circle</span>
-            ЩО ОКЕЙ:
-        </h3>
-        <ul style="padding-left:20px; line-height:1.6; color:#444;">
-            <li style="margin-bottom:10px;"><b>Локальний двіж:</b> Ями на дорогах, ціни, іржава вода з крана чи сусіди, які палять листя. <i>Валки як вони є.</i></li>
-            <li style="margin-bottom:10px;"><b>Критика місцевої влади:</b> Міська рада, депутати, комунальники — публічні люди. Питати, де гроші і чому все через одне місце, можна і треба.</li>
-            <li style="margin-bottom:10px;"><b>Любов, респекти і пошук людей:</b> Зізнатися в коханні, знайти ту симпатичну дівчину, подякувати комусь. <i>Називати імена у позитивному чи нейтральному контексті — окей.</i></li>
-            <li><b>Життєве:</b> Ваші історії, крик душі, непопулярні думки, меми.</li>
-        </ul>
-
-        <hr style="border:0; border-top:1px dashed #ddd; margin:25px 0;">
-
-        <h3 style="display:flex; align-items:center; gap:8px; color:#2c2c2c;">
-            <span class="material-symbols-outlined" style="color:#F44336;">cancel</span>
-            ЩО ЛЕТИТЬ У СМІТНИК БЕЗ ПОЯСНЕНЬ:
-        </h3>
-        <ul style="padding-left:20px; line-height:1.6; color:#444;">
-            <li style="margin-bottom:10px;"><b>ТЦК, військові та велика політика:</b> 2026 рік, воєнний стан. Будь-які теми про переміщення військових, заклики, вкиди — зносяться на етапі премодерації.</li>
-            <li style="margin-bottom:10px;"><b>Токсичний деанон і булінг:</b> Нюдси, булінг підлітків, знущальні фото — заборонено.</li>
-            <li><b>Маніпуляції і фейки.</b></li>
-        </ul>
-
-        <hr style="border:0; border-top:1px dashed #ddd; margin:25px 0;">
-
-        <h3 style="display:flex; align-items:center; gap:8px; color:#2c2c2c;">
-            <span class="material-symbols-outlined" style="color:#FF9800;">apps</span>
-            РОЗДІЛЕННЯ ЗА КНОПКАМИ:
-        </h3>
-        <ul style="padding-left:20px; line-height:1.6; color:#444;">
-            <li style="margin-bottom:8px;"><b>Написати</b> — загальна.</li>
-            <li style="margin-bottom:8px;"><b>РОЗКАЗАТИ</b> — довгі історії.</li>
-            <li style="margin-bottom:8px;"><b>НАПИСАТИ ЩОСЬ СЕРЙОЗНЕ</b> — важливі теми.</li>
-            <li style="margin-bottom:8px;"><b>Показати атмосферу</b> — естетика міста.</li>
-            <li style="margin-bottom:8px;"><b>Потрібна порада</b> — від сантехніки до особистого.</li>
-            <li style="margin-bottom:8px;"><b>ПОСКАРЖИТИСЬ</b> — реальні проблеми, не булінг.</li>
-            <li style="margin-bottom:8px;"><b>Подякувати</b> — промінь добра.</li>
-            <li style="margin-bottom:8px;"><b>ОТАКА ПРОБЛЕМА</b> — проблеми міста з локацією.</li>
-            <li style="margin-bottom:8px;"><b>Шановна міськрада</b> — конструктивна критика.</li>
-            <li style="margin-bottom:8px;"><b>ЧУТКИ</b> — плітки, ділити на десять.</li>
-            <li style="margin-bottom:8px;"><b>Відправити мем</b> — розважальний формат.</li>
-            <li style="margin-bottom:8px;"><b>ЗБІР</b> — локальні збори.</li>
-            <li style="margin-bottom:8px;"><b>Є ІДЕЯ</b> — ідеї для міста.</li>
-            <li style="margin-bottom:8px;"><b>Шопопало</b> — без категорії.</li>
-            <li><b>НАПИСАТИ АДМІНАМ</b> — технічні питання.</li>
-        </ul>
-
-        <div style="background:#FAFAF5; border:1px solid #EAE6D9; padding:18px; margin-top:35px; border-radius:12px; color:#4A4A4A;">
-            <h3 style="display:flex; align-items:center; gap:8px; margin-top:0; margin-bottom:12px; color:#d9534f;">
-                <span class="material-symbols-outlined">warning</span>
-                ВАЖЛИВІ НЮАНСИ:
-            </h3>
-            <p style="margin-bottom:12px; line-height:1.5;">
-                <b>«Чутки»</b> — не новини. Читайте і діліть на десять.
-            </p>
-            <p style="margin-bottom:0; line-height:1.5;">
-                <b>Анонімність ≠ вседозволеність.</b>
-            </p>
-        </div>
-
-    </div>
-
-    <button class="rules-modal-close" id="close-rules-btn">ЗРОЗУМІЛО</button>
-</div>
-```
-
-</div>
-<!-- ПРАВИЛА КІНЕЦЬ -->
-
-<!-- ================================================
-     РЮКЗАК (заглушка — активується пізніше)
-     ================================================ -->
-
-<div class="bag-btn" id="bag-btn" style="display:none;">🎒</div>
-
-<div class="bag-overlay" id="bag-overlay">
-    <div class="bag-panel">
-        <div class="bag-header">
-            <span class="bag-title">🎒 Назбиране</span>
-            <span class="material-symbols-outlined bag-close" id="bag-close">close</span>
-        </div>
-        <div class="bag-vanish-note">Все зникне, як тільки ти почистиш кеш. Встигни заскрінити.</div>
-        <div class="bag-tabs">
-            <button class="bag-tab active" data-tab="achievements">Досягнення</button>
-            <button class="bag-tab" data-tab="predictions">Передбачення</button>
-            <button class="bag-tab" data-tab="artifacts">Артефакти</button>
-        </div>
-        <div class="bag-content" id="bag-content"></div>
-    </div>
-</div>
-<!-- РЮКЗАК КІНЕЦЬ -->
-
-<script src="app.js?v=4"></script>
-
+<script src="app.js"></script>
 </body>
 </html>
