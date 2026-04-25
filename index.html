@@ -151,14 +151,48 @@
     <div class="overlay-header">
         <button id="builder-back" class="icon-btn"><span class="material-symbols-outlined">arrow_back</span></button>
         <span class="overlay-title" id="builder-title">Конструктор</span>
-        <div style="width: 24px;"></div>
+        <button id="builder-next-btn" class="header-text-btn">Далі</button>
     </div>
+
+    <div class="builder-toolbar">
+        <button class="tool-btn" id="tool-bold"><b>B</b></button>
+        <button class="tool-btn" id="tool-italic"><i>I</i></button>
+        
+        <select class="tool-select" id="tool-font">
+            <option value="Inter">Inter</option>
+            <option value="Vollkorn">Vollkorn</option>
+            <option value="Fira Sans Extra Condensed">Fira Sans</option>
+            <option value="Caveat">Caveat</option>
+            <option value="Oswald">Oswald</option>
+        </select>
+
+        <div class="color-wrap">
+            <span class="color-label">А</span>
+            <input type="color" id="tool-color-text" value="#050505">
+        </div>
+        <div class="color-wrap">
+            <span class="color-label">Фон</span>
+            <input type="color" id="tool-color-bg" value="#FAFAF5">
+        </div>
+    </div>
+
     <div class="builder-workspace" id="builder-workspace">
-        <div class="prmln-card" id="active-card">
+        <div class="prmln-card" id="active-card" style="background-color: #FAFAF5; color: #050505; font-family: 'Inter', sans-serif;">
+            <div class="prmln-card-header">
+                <img src="assets/images/anonfacelogo.PNG" alt="Лого">
+                <span id="card-top-label">ВАЛКІВСЬКА ПРИЙМАЛЬНЯ</span>
             </div>
+            
+            <div class="prmln-card-body fs-huge" id="card-editor" contenteditable="true" data-placeholder="Пишіть сюди..."></div>
+            
+            <div class="prmln-card-footer anon-badge-wrap">
+                <span class="material-symbols-outlined" style="font-size: 14px;">domino_mask</span>
+                <span>Анонімно</span>
+            </div>
+        </div>
     </div>
-    <button id="builder-next-btn" class="sticky-bottom-btn">Далі</button>
 </div>
+
 
 <div id="preview-overlay" class="fullscreen-overlay" style="display: none;">
     <div class="overlay-header">
