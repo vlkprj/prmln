@@ -152,13 +152,15 @@ document.querySelectorAll('.category-trigger').forEach(btn => {
             
             builderOverlay.style.display = 'flex';
             document.body.style.overflow = 'hidden';
-            setMainButton("ДАЛІ", "#000000", handleBasicNext);
+            setMainButton("ДАЛІ", "#000000", handleBasicNext);showBackButton();
+
         } 
         else if (cardType === 'atmosphere') {
             atmoOverlay.style.display = 'flex';
             document.body.style.overflow = 'hidden';
             renderAtmoStage('single-polaroid');
-            setMainButton("ДАЛІ", "#000000", handleAtmoNext);
+            setMainButton("ДАЛІ", "#000000", handleAtmoNext);showBackButton();
+
         } 
         else if (cardType === 'meme' || cardType === 'photo') {
             isMemeMode = (cardType === 'meme');
@@ -171,7 +173,8 @@ document.querySelectorAll('.category-trigger').forEach(btn => {
             
             photoOverlay.style.display = 'flex';
             document.body.style.overflow = 'hidden';
-            setMainButton("ДАЛІ", "#000000", handlePhotoNext);
+            setMainButton("ДАЛІ", "#000000", handlePhotoNext);showBackButton();
+
         }
     });
 });
@@ -205,13 +208,16 @@ document.getElementById('preview-back').addEventListener('click', () => {
     
     if (document.getElementById('preview-atmo-card')) {
         atmoOverlay.style.display = 'flex';
-        setMainButton("ДАЛІ", "#000000", handleAtmoNext);
+        setMainButton("ДАЛІ", "#000000", handleAtmoNext);showBackButton();
+
     } else if (document.getElementById('preview-photo-card')) {
         photoOverlay.style.display = 'flex';
-        setMainButton("ДАЛІ", "#000000", handlePhotoNext);
+        setMainButton("ДАЛІ", "#000000", handlePhotoNext);showBackButton();
+
     } else {
         builderOverlay.style.display = 'flex'; 
-        setMainButton("ДАЛІ", "#000000", handleBasicNext);
+        setMainButton("ДАЛІ", "#000000", handleBasicNext);showBackButton();
+
     }
 });
 
