@@ -3,6 +3,8 @@
 // ==========================================
 const tg = window.Telegram.WebApp;
 tg.expand(); // Одразу розгортаємо міні-аппу на весь екран
+tg.setHeaderColor('#FAFAF5'); // Фарбуємо верхню панель ТГ в колір твого фону
+tg.setBackgroundColor('#FAFAF5');
 const mainBtn = tg.MainButton;
 
 const builderOverlay = document.getElementById('builder-overlay');
