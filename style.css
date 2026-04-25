@@ -303,13 +303,20 @@ body, html {
 .prmln-card {
     width: 100%;
     max-width: 380px; 
-    aspect-ratio: 1080 / 1350; /* Жорстка пропорція картки */
-    background: #fff;
-    border: 2px solid #000;
+    aspect-ratio: 1080 / 1350;
     border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    box-sizing: border-box;
     position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     overflow: hidden;
+    transition: background-color 0.2s, color 0.2s;
+    flex-shrink: 0; /* ЗАБОРОНЯЄМО СТИСКАТИСЯ */
+    height: max-content; /* ДОЗВОЛЯЄМО БУТИ ВИСОКОЮ */
 }
+
 
 /* СТІКІ КНОПКА ДАЛІ/ОПУБЛІКУВАТИ */
 .sticky-bottom-btn {
@@ -491,6 +498,7 @@ body, html {
     flex-direction: column;
     justify-content: flex-start; /* Було center, міняємо щоб нормально скролився інпут */
     align-items: center;
+    overflow-y: auto;
 }
 
 /* КАРТИНКА В КАРТЦІ */
