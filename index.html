@@ -155,6 +155,13 @@
     </div>
 
     <div class="builder-toolbar">
+        <button class="tool-btn" id="tool-attach">
+            <span class="material-symbols-outlined" style="font-size: 20px;">attach_file</span>
+        </button>
+        <input type="file" id="attach-input" accept="image/*" style="display:none;">
+        
+        <div style="width: 2px; height: 24px; background: #eaeaea; margin: 0 5px;"></div>
+
         <button class="tool-btn" id="tool-bold"><b>B</b></button>
         <button class="tool-btn" id="tool-italic"><i>I</i></button>
         
@@ -183,14 +190,25 @@
                 <span id="card-top-label">ВАЛКІВСЬКА ПРИЙМАЛЬНЯ</span>
             </div>
             
+            <div class="prmln-card-image-wrap" id="card-image-wrap" style="display: none;">
+                <img id="card-attached-img" src="" alt="Фото">
+                <button id="remove-attached-img" class="remove-img-btn"><span class="material-symbols-outlined" style="font-size: 16px;">close</span></button>
+            </div>
+            
             <div class="prmln-card-body fs-huge" id="card-editor" contenteditable="true" data-placeholder="Пишіть сюди..."></div>
             
             <div class="prmln-card-footer anon-badge-wrap">
-                <span class="material-symbols-outlined" style="font-size: 14px;">domino_mask</span>
-                <span>Анонімно</span>
+                <span class="material-symbols-outlined" id="anon-icon" style="font-size: 14px;">domino_mask</span>
+                <span id="anon-text">Анонімно</span>
             </div>
         </div>
+        
+        <div class="builder-bottom-controls">
+            <input type="text" id="nickname-input" class="modern-input" placeholder="Ваш нікнейм (необов'язково)" maxlength="30">
+        </div>
     </div>
+</div>
+
 </div>
 
 
