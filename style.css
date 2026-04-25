@@ -677,3 +677,53 @@ body, html {
     border-radius: 4px;
     border: 1px solid #ccc;
 }
+/* КАРТКА ФОТО/МЕМ */
+.photo-card-layout {
+    padding: 0; /* Зносимо паддінги, щоб фото було на всю ширину */
+    justify-content: space-between;
+}
+
+.photo-card-image-area {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px 16px 0 0;
+}
+
+.photo-card-image-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Contain, щоб не зрізати текст на мемах */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.photo-card-caption-area {
+    width: 100%;
+    padding: 15px 20px 40px; /* Місце під анонімний бейдж знизу */
+    background: #000;
+    border-radius: 0 0 16px 16px;
+}
+
+#photo-caption-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    outline: none;
+}
+
+#photo-caption-input::placeholder {
+    color: #555;
+}
