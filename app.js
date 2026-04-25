@@ -124,15 +124,29 @@ function handlePhotoNext() {
 }
 
 function handlePublish() {
-    hideMainButton(); // Ховаємо кнопку під час відео
+    hideMainButton(); // Ховаємо нативну кнопку
     previewOverlay.style.display = 'none';
     successOverlay.style.display = 'flex';
     
+    // Запускаємо потрібне відео
     successVideo.src = currentMode === 'blackhole' ? 'assets/vids/BlackHole.mp4' : 'assets/vids/skrynka.mp4';
     successVideo.play();
     
-    setTimeout(() => { successText.style.opacity = '1'; }, 1500);
+    // Показуємо текст "Відправлено"
+    setTimeout(() => { 
+        successText.style.opacity = '1'; 
+    }, 1500);
+
+    // АВТОПОВЕРНЕННЯ НА ГОЛОВНУ ЧЕРЕЗ 5 СЕКУНД
+    setTimeout(() => {
+        successOverlay.style.display = 'none';
+        successText.style.opacity = '0'; // Ховаємо текст для наступного разу
+        document.body.style.overflow = ''; // Повертаємо скрол
+        window.scrollTo({ top: lastScrollY, behavior: 'instant' }); // Кидаємо туди, де юзер був
+        tg.BackButton.hide(); // На всяк випадок ховаємо нативну стрілочку
+    }, 5000); 
 }
+
 
 // ==========================================
 // 4. ГОЛОВНИЙ МАРШРУТИЗАТОР КНОПОК
