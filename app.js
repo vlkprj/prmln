@@ -337,3 +337,95 @@ document.getElementById('atmo-next-btn').addEventListener('click', () => {
     atmoOverlay.style.display = 'none';
     previewOverlay.style.display = 'flex';
 });
+// ЗМІННІ ФОТО/МЕМ ОВЕРЛЕЮ
+const photoOverlay = document.getElementById('photo-overlay');
+const photoTitle = document.getElementById('photo-title');
+const photoDropZone = document.getElementById('photo-drop-zone');
+const photoFileInput = document.getElementById('photo-file-input');
+const photoMainImg = document.getElementById('photo-main-img');
+const photoPlaceholderIcon = document.getElementById('photo-placeholder-icon');
+const photoNicknameInput = document.getElementById('photo-nickname-input');
+const photoAnonText = document.getElementById('photo-anon-text');
+const photoAnonIcon = document.getElementById('photo-anon-icon');
+const photoCard = document.getElementById('photo-card');
+
+let isMemeMode = false;
+
+// ВІДКРИТТЯ: ВІДПРАВИТИ ФОТО
+document.querySelector('.b-photo').addEventListener('click', () => {
+    isMemeMode = false;
+    photoTitle.innerText = 'Відправити фото';
+    photoOverlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+});
+
+// ВІДКРИТТЯ: ВІДПРАВИТИ МЕМ
+document.querySelector('.b-meme').addEventListener('click', () => {
+    isMemeMode = true;
+    photoTitle.innerText = 'Відправити мем';
+    photoOverlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+});
+
+// ЗАКРИТТЯ
+document.getElementById('photo-back').addEventListener('click', () => {
+    photoOverlay.style.display = 'none';
+    document.body.style.overflow = '';
+});
+
+// ЗАВАНТАЖЕННЯ ФОТО
+photoDropZone.addEventListener('click', () => photoFileInput.click());
+
+photoFileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            photoMainImg.src = event.target.result;
+            photoMainImg.style.display = 'block';
+            photoPlaceholderIcon.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// ЛАЙВ-НІКНЕЙМ
+photoNicknameInput.addEventListener('input', (e) => {
+    const val = e.target.value.trim();
+    if (val.length > 0) {
+        photoAnonText.innerText = val;
+        photoAnonIcon.innerText = 'person';
+    } else {
+        photoAnonText.innerText = 'Анонімно';
+        photoAnonIcon.innerText = 'domino_mask';
+    }
+});
+
+// ПЕРЕХІД В ПРЕВ'Ю
+document.getElementById('photo-next-btn').addEventListener('click', () => {
+    const previewWorkspace = document.getElementById('preview-workspace');
+    
+    if (photoMainImg.style.display === 'none') {
+        alert('Закинь хоча б одну картинку, це ж конструктор фото.');
+        return;
+    }
+
+    // Встановлюємо правильний режим для відео
+    currentMode = isMemeMode ? 'blackhole' : 'skrynka'; 
+
+    // Чистимо і клонуємо
+    previewWorkspace.innerHTML = '';
+    const cardClone = photoCard.cloneNode(true);
+    cardClone.id = 'preview-photo-card';
+
+    // Блокуємо інпут підпису
+    const captionInput = cardClone.querySelector('#photo-caption-input');
+    if (captionInput) {
+        captionInput.disabled = true;
+    }
+
+    previewWorkspace.appendChild(cardClone);
+
+    photoOverlay.style.display = 'none';
+    previewOverlay.style.display = 'flex';
+});
