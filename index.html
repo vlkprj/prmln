@@ -230,6 +230,50 @@
     </div>
 </div>
 
+<div id="atmo-overlay" class="fullscreen-overlay" style="display: none;">
+    <div class="overlay-header">
+        <button id="atmo-back" class="icon-btn"><span class="material-symbols-outlined">arrow_back</span></button>
+        <span class="overlay-title">Атмосфера</span>
+        <button id="atmo-next-btn" class="header-text-btn">Далі</button>
+    </div>
+
+    <div class="builder-toolbar" style="justify-content: center;">
+        <button class="atmo-layout-btn active" data-layout="single-polaroid">1 PLRD</button>
+        <button class="atmo-layout-btn" data-layout="two-polaroid">2 PLRD</button>
+        <button class="atmo-layout-btn" data-layout="single-square">1 Квадрат</button>
+        <button class="atmo-layout-btn" data-layout="grid-four">4 Сітка</button>
+        
+        <div style="width: 2px; height: 24px; background: #eaeaea; margin: 0 10px;"></div>
+        
+        <div class="color-wrap">
+            <span class="color-label">Фон</span>
+            <input type="color" id="atmo-color-bg" value="#FAFAF5">
+        </div>
+    </div>
+
+    <div class="builder-workspace" id="atmo-workspace">
+        <div class="prmln-card" id="atmo-card" style="background-color: #FAFAF5; align-items: center; justify-content: center;">
+            <div class="prmln-card-header" style="position: absolute; top: 24px; left: 0; right: 0;">
+                <img src="assets/images/anonfacelogo.PNG" alt="Лого">
+                <span>АТМОСФЕРА</span>
+            </div>
+            
+            <div class="atmo-stage atmo-stage--single-polaroid" id="atmo-stage">
+                </div>
+            
+            <div class="prmln-card-footer anon-badge-wrap" style="position: absolute; bottom: 24px; left: 0; right: 0;">
+                <span class="material-symbols-outlined" id="atmo-anon-icon" style="font-size: 14px;">domino_mask</span>
+                <span id="atmo-anon-text">Анонімно</span>
+            </div>
+        </div>
+        
+        <div class="builder-bottom-controls">
+            <input type="text" id="atmo-nickname-input" class="modern-input" placeholder="Ваш нікнейм (необов'язково)" maxlength="30">
+        </div>
+    </div>
+</div>
+
+
 <script src="app.js"></script>
 </body>
 </html>
