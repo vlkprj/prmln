@@ -298,3 +298,42 @@ function renderAtmoStage(layout) {
         atmoStage.appendChild(slot);
     }
 }
+// ПЕРЕХІД В ПРЕВ'Ю ДЛЯ АТМОСФЕРИ
+document.getElementById('atmo-next-btn').addEventListener('click', () => {
+    const previewWorkspace = document.getElementById('preview-workspace');
+    const atmoCard = document.getElementById('atmo-card');
+
+    // Перевіряємо чи є хоча б одне завантажене фото (ігноруємо логотип)
+    const hasPhoto = Array.from(atmoCard.querySelectorAll('.atmo-slot img')).some(img => img.style.display === 'block');
+    
+    if (!hasPhoto) {
+        alert('Атмосфера без фото — це тупо вакуум. Додай хоча б одну пікчу.');
+        return;
+    }
+
+    // Встановлюємо режим, щоб після "Опублікувати" гарантовано полетіло відео Скриньки
+    currentMode = 'skrynka'; 
+
+    // Чистимо загальний екран прев'ю
+    previewWorkspace.innerHTML = '';
+    
+    // Робимо точну копію картки атмосфери
+    const cardClone = atmoCard.cloneNode(true);
+    cardClone.id = 'preview-atmo-card';
+
+    // Вирубаємо всі інпути (підписи) в клоні, щоб вони стали просто текстом
+    cardClone.querySelectorAll('input').forEach(input => {
+        input.disabled = true;
+        input.style.border = 'none';
+        input.style.background = 'transparent';
+        input.style.color = '#333'; // Щоб текст не ставав сірим як disabled
+        input.style.opacity = '1';
+    });
+
+    // Вставляємо клон на екран перевірки
+    previewWorkspace.appendChild(cardClone);
+
+    // Перемикаємо екрани
+    atmoOverlay.style.display = 'none';
+    previewOverlay.style.display = 'flex';
+});
