@@ -429,3 +429,44 @@ document.getElementById('photo-next-btn').addEventListener('click', () => {
     photoOverlay.style.display = 'none';
     previewOverlay.style.display = 'flex';
 });
+
+// ГОЛОВНИЙ МАРШРУТИЗАТОР КНОПОК
+const categoryButtons = document.querySelectorAll('.category-trigger');
+let lastScrollY = 0; // Щоб пам'ятати, де ми були у стрічці
+
+categoryButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const cardType = btn.getAttribute('data-card-type');
+        currentMode = btn.getAttribute('data-mode'); // skrynka або blackhole
+        const title = btn.getAttribute('data-title');
+        
+        lastScrollY = window.scrollY;
+
+        if (cardType === 'basic') {
+            document.getElementById('builder-title').innerText = title;
+            document.getElementById('card-top-label').innerText = title;
+            document.getElementById('card-editor').innerHTML = ''; 
+            
+            builderOverlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        } 
+        else if (cardType === 'atmosphere') {
+            atmoOverlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            renderAtmoStage('single-polaroid');
+        } 
+        else if (cardType === 'meme' || cardType === 'photo') {
+            isMemeMode = (cardType === 'meme');
+            document.getElementById('photo-title').innerText = title;
+            
+            // Чистимо попереднє фото
+            document.getElementById('photo-main-img').style.display = 'none';
+            document.getElementById('photo-main-img').src = '';
+            document.getElementById('photo-placeholder-icon').style.display = 'block';
+            document.getElementById('photo-caption-input').value = '';
+            
+            photoOverlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    });
+});
