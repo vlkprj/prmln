@@ -184,3 +184,117 @@ nicknameInput.addEventListener('input', (e) => {
         anonIcon.innerText = 'domino_mask';
     }
 });
+// ЗМІННІ АТМОСФЕРИ
+const atmoOverlay = document.getElementById('atmo-overlay');
+const atmoStage = document.getElementById('atmo-stage');
+const atmoColorBg = document.getElementById('atmo-color-bg');
+const atmoCard = document.getElementById('atmo-card');
+const atmoNicknameInput = document.getElementById('atmo-nickname-input');
+const atmoAnonText = document.getElementById('atmo-anon-text');
+const atmoAnonIcon = document.getElementById('atmo-anon-icon');
+
+// ВІДКРИТТЯ АТМОСФЕРИ (Прив'язуємо до кнопки в головному меню)
+document.querySelector('.b-atmosphere').addEventListener('click', () => {
+    atmoOverlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    renderAtmoStage('single-polaroid'); // Дефолтний лейаут
+});
+
+// ЗАКРИТТЯ АТМОСФЕРИ
+document.getElementById('atmo-back').addEventListener('click', () => {
+    atmoOverlay.style.display = 'none';
+    document.body.style.overflow = '';
+});
+
+// ЗМІНА ФОНУ КАРТКИ АТМОСФЕРИ
+atmoColorBg.addEventListener('input', (e) => {
+    atmoCard.style.backgroundColor = e.target.value;
+});
+
+// ЛАЙВ-НІКНЕЙМ ДЛЯ АТМОСФЕРИ
+atmoNicknameInput.addEventListener('input', (e) => {
+    const val = e.target.value.trim();
+    if (val.length > 0) {
+        atmoAnonText.innerText = val;
+        atmoAnonIcon.innerText = 'person';
+    } else {
+        atmoAnonText.innerText = 'Анонімно';
+        atmoAnonIcon.innerText = 'domino_mask';
+    }
+});
+
+// ЛОГІКА ПЕРЕМИКАННЯ ЛЕЙАУТІВ
+document.querySelectorAll('.atmo-layout-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.atmo-layout-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderAtmoStage(btn.getAttribute('data-layout'));
+    });
+});
+
+// ФУНКЦІЯ ГЕНЕРАЦІЇ СЛОТІВ ДЛЯ ФОТО
+function renderAtmoStage(layout) {
+    atmoStage.innerHTML = '';
+    atmoStage.className = `atmo-stage atmo-stage--${layout}`;
+    
+    let slotCount = 1;
+    let slotClass = 'slot-square';
+    let hasCaption = false;
+
+    if (layout === 'single-polaroid') { slotCount = 1; slotClass = 'slot-polaroid'; hasCaption = true; }
+    if (layout === 'two-polaroid') { slotCount = 2; slotClass = 'slot-polaroid'; hasCaption = true; }
+    if (layout === 'grid-four') { slotCount = 4; slotClass = 'slot-grid-item'; }
+
+    for (let i = 0; i < slotCount; i++) {
+        const slot = document.createElement('div');
+        slot.className = `atmo-slot ${slotClass}`;
+        
+        const placeholder = document.createElement('div');
+        placeholder.className = 'atmo-slot-placeholder';
+        placeholder.innerHTML = '<span class="material-symbols-outlined" style="font-size:32px;">add_photo_alternate</span>';
+        
+        const img = document.createElement('img');
+        
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = 'image/*';
+        fileInput.style.display = 'none';
+
+        slot.appendChild(placeholder);
+        slot.appendChild(img);
+        slot.appendChild(fileInput);
+
+        if (hasCaption) {
+            const captionInput = document.createElement('input');
+            captionInput.type = 'text';
+            captionInput.className = 'atmo-caption';
+            captionInput.placeholder = 'підпис...';
+            captionInput.maxLength = 30;
+            slot.appendChild(captionInput);
+        }
+
+        // Клік по слоту відкриває галерею (якщо не клікнули по інпуту тексту)
+        slot.addEventListener('click', (e) => {
+            if (e.target.tagName !== 'INPUT') {
+                fileInput.click();
+            }
+        });
+
+        // Завантаження фото в слот
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    img.src = event.target.result;
+                    img.style.display = 'block';
+                    placeholder.style.display = 'none';
+                    slot.style.border = 'none'; // Прибираємо пунктир, коли є фото
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        atmoStage.appendChild(slot);
+    }
+}
