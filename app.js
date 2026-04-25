@@ -25,8 +25,9 @@ categoryButtons.forEach(btn => {
 
 // КНОПКИ НАВІГАЦІЇ
 document.getElementById('builder-back').addEventListener('click', () => {
-    builderOverlay.style.display = 'none';
-    document.body.style.overflow = '';
+    builderOverlay.style.display = 'none'; // Ховаємо оверлей
+    document.body.style.overflow = ''; // Повертаємо скрол фону
+    window.scrollTo({ top: lastScrollY, behavior: 'instant' }); // Повертаємо юзера на місце
 });
 
 // КНОПКА "ДАЛІ" (Перехід в Прев'ю + Клонування картки)
@@ -204,6 +205,7 @@ document.querySelector('.b-atmosphere').addEventListener('click', () => {
 document.getElementById('atmo-back').addEventListener('click', () => {
     atmoOverlay.style.display = 'none';
     document.body.style.overflow = '';
+    window.scrollTo({ top: lastScrollY, behavior: 'instant' });
 });
 
 // ЗМІНА ФОНУ КАРТКИ АТМОСФЕРИ
@@ -371,6 +373,7 @@ document.querySelector('.b-meme').addEventListener('click', () => {
 document.getElementById('photo-back').addEventListener('click', () => {
     photoOverlay.style.display = 'none';
     document.body.style.overflow = '';
+    window.scrollTo({ top: lastScrollY, behavior: 'instant' });
 });
 
 // ЗАВАНТАЖЕННЯ ФОТО
