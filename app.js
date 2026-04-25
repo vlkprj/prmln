@@ -137,3 +137,50 @@ cardEditor.addEventListener('input', () => {
         cardEditor.classList.add('fs-small');
     }
 });
+// ЗМІННІ ДЛЯ ФОТО ТА НІКНЕЙМУ
+const toolAttach = document.getElementById('tool-attach');
+const attachInput = document.getElementById('attach-input');
+const cardImageWrap = document.getElementById('card-image-wrap');
+const cardAttachedImg = document.getElementById('card-attached-img');
+const removeAttachedImg = document.getElementById('remove-attached-img');
+
+const nicknameInput = document.getElementById('nickname-input');
+const anonText = document.getElementById('anon-text');
+const anonIcon = document.getElementById('anon-icon');
+
+// ЗВ'ЯЗКА КНОПКИ З ІНПУТОМ ФАЙЛУ
+toolAttach.addEventListener('click', () => {
+    attachInput.click();
+});
+
+// ЗАВАНТАЖЕННЯ ФОТО
+attachInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            cardAttachedImg.src = event.target.result;
+            cardImageWrap.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// ВИДАЛЕННЯ ФОТО
+removeAttachedImg.addEventListener('click', () => {
+    attachInput.value = '';
+    cardAttachedImg.src = '';
+    cardImageWrap.style.display = 'none';
+});
+
+// ЛАЙВ-ОНОВЛЕННЯ НІКНЕЙМУ
+nicknameInput.addEventListener('input', (e) => {
+    const val = e.target.value.trim();
+    if (val.length > 0) {
+        anonText.innerText = val;
+        anonIcon.innerText = 'person'; // Міняємо маску на звичайного юзера
+    } else {
+        anonText.innerText = 'Анонімно';
+        anonIcon.innerText = 'domino_mask';
+    }
+});
