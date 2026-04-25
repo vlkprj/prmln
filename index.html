@@ -273,6 +273,38 @@
     </div>
 </div>
 
+<div id="photo-overlay" class="fullscreen-overlay" style="display: none;">
+    <div class="overlay-header">
+        <button id="photo-back" class="icon-btn"><span class="material-symbols-outlined">arrow_back</span></button>
+        <span class="overlay-title" id="photo-title">Відправити фото</span>
+        <button id="photo-next-btn" class="header-text-btn">Далі</button>
+    </div>
+
+    <div class="builder-workspace" id="photo-workspace">
+        <div class="prmln-card photo-card-layout" id="photo-card" style="background-color: #000; color: #fff;">
+            
+            <div class="photo-card-image-area" id="photo-drop-zone">
+                <span class="material-symbols-outlined" id="photo-placeholder-icon" style="font-size: 48px; color: #444;">add_photo_alternate</span>
+                <img id="photo-main-img" src="" style="display: none;">
+                <input type="file" id="photo-file-input" accept="image/*" style="display: none;">
+            </div>
+            
+            <div class="photo-card-caption-area">
+                <input type="text" id="photo-caption-input" placeholder="Підпис (необов'язково)..." maxlength="60">
+            </div>
+
+            <div class="prmln-card-footer anon-badge-wrap" style="position: absolute; bottom: 15px; left: 0; right: 0; opacity: 0.6;">
+                <span class="material-symbols-outlined" id="photo-anon-icon" style="font-size: 14px;">domino_mask</span>
+                <span id="photo-anon-text">Анонімно</span>
+            </div>
+        </div>
+
+        <div class="builder-bottom-controls">
+            <input type="text" id="photo-nickname-input" class="modern-input" placeholder="Ваш нікнейм (необов'язково)" maxlength="30">
+        </div>
+    </div>
+</div>
+
 
 <script src="app.js"></script>
 </body>
