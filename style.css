@@ -221,6 +221,47 @@ body, html {
     filter: drop-shadow(0 0 5px rgba(100,200,255,0.8));
 }
 
+/* ГОЛОВНИЙ ФІД ТА БАЗОВІ КНОПКИ */
+.main-feed { 
+    padding: 0 15px 100px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+}
+
+.row-container { 
+    display: flex; 
+    gap: 10px; 
+}
+
+.row-container > .btn { 
+    flex: 1; 
+}
+
+.btn {
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 12px;
+    padding: 15px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif; /* тимчасовий шрифт щоб не виглядало сумно */
+    transition: transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.footer-copy {
+    text-align: center;
+    font-size: 10px;
+    color: #ccc;
+    margin-top: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
 /* ОВЕРЛЕЇ */
 .fullscreen-overlay {
     position: fixed;
