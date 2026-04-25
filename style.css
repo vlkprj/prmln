@@ -280,9 +280,12 @@ body, html {
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    background: #fff;
+    /* Телеграм сам скаже, скільки пікселів відступити зверху, щоб нічого не перекривалось */
+    padding-top: calc(15px + var(--tg-safe-area-inset-top, env(safe-area-inset-top, 0px)));
+    background: #FAFAF5; /* Колір як у всієї апи */
     border-bottom: 2px solid #000;
 }
+
 
 .icon-btn {
     background: none;
