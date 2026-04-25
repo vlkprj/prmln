@@ -29,10 +29,40 @@ document.getElementById('builder-back').addEventListener('click', () => {
     document.body.style.overflow = '';
 });
 
+// КНОПКА "ДАЛІ" (Перехід в Прев'ю + Клонування картки)
 document.getElementById('builder-next-btn').addEventListener('click', () => {
+    const previewWorkspace = document.getElementById('preview-workspace');
+    const activeCard = document.getElementById('active-card');
+    const cardEditor = document.getElementById('card-editor');
+    
+    // Якщо юзер нічого не написав, не пускаємо далі (або пускаємо, але попереджаємо. Поки просто не пускаємо)
+    if (!cardEditor.innerText.trim()) {
+        alert('А написати щось? Карток-пустушок нам не треба.');
+        return;
+    }
+
+    // Чистимо попередній перегляд
+    previewWorkspace.innerHTML = '';
+    
+    // Робимо точну копію нашої картки
+    const cardClone = activeCard.cloneNode(true);
+    cardClone.id = 'preview-card'; // Змінюємо ID щоб не було конфліктів
+    
+    // Вирубаємо можливість редагувати текст в прев'ю
+    const clonedEditor = cardClone.querySelector('#card-editor');
+    if (clonedEditor) {
+        clonedEditor.id = 'preview-editor';
+        clonedEditor.setAttribute('contenteditable', 'false');
+    }
+
+    // Вставляємо клон на екран
+    previewWorkspace.appendChild(cardClone);
+
+    // Перемикаємо екрани
     builderOverlay.style.display = 'none';
     previewOverlay.style.display = 'flex';
 });
+
 
 document.getElementById('preview-back').addEventListener('click', () => {
     previewOverlay.style.display = 'none';
