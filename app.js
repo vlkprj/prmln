@@ -163,7 +163,6 @@ document.querySelectorAll('.category-trigger').forEach(btn => {
 
         if (cardType === 'basic') {
             document.getElementById('builder-title').innerText = title;
-            document.getElementById('card-top-label').innerText = title;
             document.getElementById('card-editor').innerHTML = ''; 
             
             builderOverlay.style.display = 'flex';
@@ -245,7 +244,18 @@ const activeCard = document.getElementById('active-card');
 
 document.getElementById('tool-bold').addEventListener('click', () => { document.execCommand('bold', false, null); cardEditor.focus(); });
 document.getElementById('tool-italic').addEventListener('click', () => { document.execCommand('italic', false, null); cardEditor.focus(); });
-document.getElementById('tool-font').addEventListener('change', (e) => activeCard.style.fontFamily = e.target.value);
+document.getElementById('tool-font').addEventListener('change', (e) => {
+    const fontStr = e.target.value === 'Inter' ? 'Inter, sans-serif' : `'${e.target.value}', sans-serif`;
+    cardEditor.style.fontFamily = fontStr;
+    cardEditor.dataset.activeFont = fontStr;
+});
+
+cardEditor.addEventListener('paste', (e) => {
+    e.preventDefault();
+    const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+    document.execCommand('insertText', false, text);
+});
+
 document.getElementById('tool-color-text').addEventListener('input', (e) => activeCard.style.color = e.target.value);
 document.getElementById('tool-color-bg').addEventListener('input', (e) => activeCard.style.backgroundColor = e.target.value);
 
