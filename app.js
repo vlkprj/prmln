@@ -61,12 +61,60 @@ function handleBasicNext() {
     }
     
     previewWorkspace.innerHTML = '';
-    const cardClone = activeCard.cloneNode(true);
-    cardClone.id = 'preview-card';
-    const clonedEditor = cardClone.querySelector('#card-editor');
-    if (clonedEditor) { clonedEditor.id = 'preview-editor'; clonedEditor.setAttribute('contenteditable', 'false'); }
-    
-    previewWorkspace.appendChild(cardClone);
+    const fullText = cardEditor.innerText.trim();
+    const maxChars = 350;
+    let chunks = [];
+
+    if (fullText.length > 0) {
+        if (fullText.length <= maxChars) {
+            chunks.push(fullText);
+        } else {
+            let currentChunk = '';
+            const words = fullText.split(/([ \n])/);
+            for (let word of words) {
+                if ((currentChunk + word).length > maxChars) {
+                    chunks.push(currentChunk.trim());
+                    currentChunk = word;
+                } else {
+                    currentChunk += word;
+                }
+            }
+            if (currentChunk.trim()) chunks.push(currentChunk.trim());
+        }
+    } else if (cardImageWrap.style.display !== 'none') {
+        chunks.push('Фото');
+    }
+
+    chunks.forEach((chunk, index) => {
+        const cardClone = activeCard.cloneNode(true);
+        cardClone.id = `preview-card-${index}`;
+        cardClone.style.marginBottom = '15px';
+        
+        const clonedEditor = cardClone.querySelector('#card-editor');
+        clonedEditor.id = `preview-editor-${index}`;
+        clonedEditor.setAttribute('contenteditable', 'false');
+        
+        if (chunk === 'Фото' && cardImageWrap.style.display !== 'none') {
+            clonedEditor.innerText = '';
+        } else {
+            clonedEditor.innerText = chunk;
+        }
+
+        const clonedImgWrap = cardClone.querySelector('#card-image-wrap');
+        if (index > 0 && clonedImgWrap) {
+            clonedImgWrap.style.display = 'none';
+        }
+
+        clonedEditor.className = 'prmln-card-body';
+        const len = chunk.length;
+        if (len < 80) clonedEditor.classList.add('fs-huge');
+        else if (len < 180) clonedEditor.classList.add('fs-large');
+        else if (len < 280) clonedEditor.classList.add('fs-medium');
+        else clonedEditor.classList.add('fs-small');
+
+        previewWorkspace.appendChild(cardClone);
+    });
+
     builderOverlay.style.display = 'none';
     previewOverlay.style.display = 'flex';
     
@@ -257,7 +305,17 @@ cardEditor.addEventListener('paste', (e) => {
 });
 
 document.getElementById('tool-color-text').addEventListener('input', (e) => activeCard.style.color = e.target.value);
-document.getElementById('tool-color-bg').addEventListener('input', (e) => activeCard.style.backgroundColor = e.target.value);
+document.querySelectorAll('#bg-palette .color-dot').forEach(dot => {
+    dot.addEventListener('click', (e) => {
+        const selectedColor = e.target.dataset.color;
+        activeCard.style.backgroundColor = selectedColor;
+        if (selectedColor === '#262624' || selectedColor === '#B24A3B') {
+            activeCard.style.color = '#FFFFFF';
+        } else {
+            activeCard.style.color = '#050505';
+        }
+    });
+});
 
 cardEditor.addEventListener('input', () => {
     const textLength = cardEditor.innerText.trim().length;
